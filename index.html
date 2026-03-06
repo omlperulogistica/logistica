@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OML PERÚ</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html, body{
+      width:100%;
+      overflow-x:hidden;
+    }
+
+    body{
+      font-family:"Inter", Arial, sans-serif;
+      background:#97181e;
+      color:#fff;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      min-height:100vh;
+      padding:14px 18px 0;
+    }
+
+    .phone{
+      width:100%;
+      max-width:580px;
+      background:linear-gradient(180deg,#cb2f37 0%, #c62c34 100%);
+      border-radius:18px 18px 0 0;
+      padding:20px 18px 70px;
+      box-shadow:0 20px 46px rgba(0,0,0,.22);
+      min-height:100vh;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:26px;
+    }
+
+    .topbar-right{
+      display:flex;
+      gap:10px;
+    }
+
+    .circle-btn{
+      width:40px;
+      height:40px;
+      border:none;
+      border-radius:50%;
+      background:#e7e7e7;
+      color:#111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      flex-shrink:0;
+      font-size:16px;
+    }
+
+    .profile{
+      text-align:center;
+      margin-bottom:28px;
+    }
+
+    .avatar{
+      width:96px;
+      height:96px;
+      object-fit:contain;
+      display:block;
+      margin:0 auto 16px;
+      background:transparent;
+    }
+
+    .username{
+      font-size:22px;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      line-height:1.05;
+      margin-bottom:8px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:#18a8ff;
+      font-size:10px;
+      margin-left:6px;
+      vertical-align:middle;
+    }
+
+    .bio{
+      font-size:13px;
+      font-weight:700;
+      line-height:1.45;
+      color:#f3f3f3;
+      max-width:360px;
+      margin:0 auto 16px;
+    }
+
+    .socials{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .socials a{
+      width:30px;
+      height:30px;
+      color:#fff;
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+    }
+
+    .tabs-wrap{
+      display:flex;
+      justify-content:center;
+      margin-bottom:26px;
+    }
+
+    .tabs{
+      display:inline-flex;
+      background:rgba(255,255,255,.34);
+      padding:4px;
+      border-radius:999px;
+      gap:4px;
+    }
+
+    .tab-btn{
+      border:none;
+      min-width:92px;
+      padding:12px 22px;
+      border-radius:999px;
+      background:transparent;
+      color:#111;
+      font-size:14px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .tab-btn.active{
+      background:#000;
+      color:#fff;
+      box-shadow:0 6px 16px rgba(0,0,0,.20);
+    }
+
+    .panel{
+      display:none;
+    }
+
+    .panel.active{
+      display:block;
+    }
+
+    .featured-card,
+    .song-card,
+    .grid-card,
+    .member-card,
+    .video-banner{
+      display:block;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .featured-card{
+      background:#005db8;
+      padding:13px 13px 0;
+      margin-bottom:26px;
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:0 14px 35px rgba(0,0,0,.16);
+    }
+
+    .featured-inner{
+      background:#d3523b;
+      padding:0;
+      border-radius:20px;
+      overflow:hidden;
+    }
+
+    .featured-image{
+      width:100%;
+      display:block;
+      object-fit:cover;
+      aspect-ratio:16/9;
+    }
+
+    .card-footer{
+      background:#005db8;
+      min-height:60px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:0 14px;
+      color:#fff;
+    }
+
+    .footer-left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+      flex:1;
+    }
+
+    .footer-text{
+      font-size:13px;
+      font-weight:500;
+      color:#fff;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .mini-thumb{
+      width:52px;
+      height:52px;
+      object-fit:cover;
+      flex-shrink:0;
+      display:block;
+      background:#fff;
+      border-radius:12px;
+    }
+
+    .dots{
+      font-size:22px;
+      color:rgba(255,255,255,.85);
+      line-height:1;
+      flex-shrink:0;
+    }
+
+    .song-card{
+      background:#005db8;
+      margin-bottom:14px;
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 14px 35px rgba(0,0,0,.16);
+    }
+
+    .song-card .card-footer{
+      min-height:66px;
+      padding:0 16px;
+      background:#005db8;
+    }
+
+    .song-card .footer-left{
+      justify-content:center;
+      gap:14px;
+    }
+
+    .song-card .footer-text{
+      text-align:center;
+      flex:1;
+      white-space:normal;
+      overflow:visible;
+      text-overflow:unset;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:14px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:-0.01em;
+      margin-bottom:16px;
+    }
+
+    .section-space-top{
+      margin-top:26px;
+    }
+
+    .block-group{
+      margin-bottom:28px;
+    }
+
+    .collection-subhead{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-bottom:14px;
+    }
+
+    .collection-subitem{
+      text-align:center;
+      font-size:14px;
+      font-weight:800;
+      text-transform:uppercase;
+      color:#fff;
+      padding:4px 0;
+      letter-spacing:-0.01em;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-bottom:46px;
+    }
+
+    .grid-card{
+      background:#005db8;
+      overflow:hidden;
+      border-radius:24px;
+      box-shadow:0 14px 35px rgba(0,0,0,.16);
+    }
+
+    .grid-card img{
+      width:100%;
+      display:block;
+      object-fit:cover;
+      aspect-ratio:1/1.12;
+    }
+
+    .grid-bottom{
+      min-height:64px;
+      padding:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:8px;
+      color:#fff;
+    }
+
+    .grid-title{
+      font-size:12px;
+      line-height:1.24;
+      color:#fff;
+      font-weight:500;
+    }
+
+    .video-title,
+    .location-title,
+    .member-title{
+      text-align:center;
+      font-size:14px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:-0.01em;
+      margin-bottom:18px;
+    }
+
+    /* VIDEO */
+    .video-banner{
+      position:relative;
+      width:100%;
+      min-height:295px;
+      border-radius:20px;
+      overflow:hidden;
+      margin:0 0 36px;
+      cursor:pointer;
+      background:#111;
+      border:none;
+      box-shadow:0 14px 35px rgba(0,0,0,.16);
+    }
+
+    .video-banner img{
+      width:100%;
+      height:100%;
+      position:absolute;
+      inset:0;
+      object-fit:cover;
+      filter:saturate(1.02) contrast(1.03);
+      transform:scale(1.02);
+    }
+
+    .video-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom, rgba(0,0,0,.10) 0%, rgba(0,0,0,.10) 35%, rgba(0,0,0,.40) 62%, rgba(0,0,0,.86) 100%);
+      z-index:1;
+    }
+
+    .play-center{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      background:rgba(0,0,0,.42);
+      border:2px solid rgba(255,255,255,.15);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:3;
+      backdrop-filter:blur(3px);
+    }
+
+    .play-center svg{
+      margin-left:3px;
+    }
+
+    .video-text{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:16px;
+      z-index:3;
+    }
+
+    .video-big{
+      font-size:44px;
+      line-height:.92;
+      font-weight:900;
+      letter-spacing:-0.06em;
+      color:rgba(255,255,255,.86);
+      text-transform:uppercase;
+      text-shadow:0 8px 18px rgba(0,0,0,.45);
+      margin-bottom:8px;
+    }
+
+    .video-small{
+      font-size:18px;
+      font-weight:700;
+      color:#f2f2f2;
+      line-height:1.2;
+      text-shadow:0 3px 12px rgba(0,0,0,.5);
+      margin-bottom:6px;
+    }
+
+    .video-meta{
+      font-size:14px;
+      font-weight:600;
+      color:#efefef;
+      opacity:.95;
+    }
+
+    .video-dots{
+      position:absolute;
+      right:16px;
+      bottom:18px;
+      z-index:3;
+      font-size:24px;
+      line-height:1;
+      color:rgba(255,255,255,.72);
+    }
+
+    /* MAPA */
+    .location-wrap{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      border-radius:22px;
+      overflow:hidden;
+      margin:0 0 36px;
+      background:#dce8d6;
+      border:none;
+      box-shadow:0 6px 18px rgba(0,0,0,.18);
+    }
+
+    .location-wrap iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      z-index:1;
+    }
+
+    .map-open-btn{
+      position:absolute;
+      top:10px;
+      left:10px;
+      z-index:3;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 10px;
+      font-size:12px;
+      font-weight:700;
+      color:#1a73e8;
+      background:rgba(255,255,255,.96);
+      border-radius:6px;
+      text-decoration:none;
+      box-shadow:0 2px 8px rgba(0,0,0,.14);
+    }
+
+    .map-open-btn svg{
+      flex-shrink:0;
+    }
+
+    .map-fullscreen{
+      position:absolute;
+      right:12px;
+      bottom:12px;
+      z-index:3;
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:rgba(255,255,255,.96);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 2px 8px rgba(0,0,0,.14);
+      pointer-events:none;
+    }
+
+    .member-card{
+      background:#005db8;
+      margin-bottom:14px;
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 14px 35px rgba(0,0,0,.16);
+    }
+
+    .member-card .card-footer{
+      min-height:68px;
+      padding:0 16px;
+      background:#005db8;
+    }
+
+    .member-card .footer-left{
+      justify-content:center;
+      gap:16px;
+    }
+
+    .member-card .footer-text{
+      text-align:center;
+      flex:1;
+      white-space:normal;
+      overflow:visible;
+      text-overflow:unset;
+    }
+
+    .fake-badge{
+      width:52px;
+      height:52px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow:hidden;
+      border-radius:14px;
+      background:#fff;
+      color:#0d4c95;
+      font-size:10px;
+      font-weight:900;
+    }
+
+    .join-btn{
+      display:block;
+      width:max-content;
+      margin:28px auto 32px;
+      padding:16px 28px;
+      background:#fff;
+      color:#111;
+      border-radius:999px;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:800;
+      letter-spacing:-0.01em;
+    }
+
+    .footer-links{
+      text-align:center;
+      font-size:11px;
+      line-height:1.7;
+      color:#f2f2f2;
+      font-weight:500;
+      margin-bottom:12px;
+    }
+
+    .footer-links a{
+      text-decoration:none;
+      color:#f2f2f2;
+    }
+
+    /* MODAL VIDEO */
+    .video-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.84);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:9999;
+    }
+
+    .video-modal.active{
+      display:flex;
+    }
+
+    .video-box{
+      width:min(1000px, 96vw);
+      background:#000;
+      border-radius:16px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 18px 50px rgba(0,0,0,.45);
+    }
+
+    .video-frame-wrap{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      background:#000;
+    }
+
+    .video-frame-wrap iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .close-video{
+      position:absolute;
+      top:10px;
+      right:10px;
+      width:42px;
+      height:42px;
+      border:none;
+      border-radius:50%;
+      background:rgba(255,255,255,.15);
+      color:#fff;
+      font-size:24px;
+      cursor:pointer;
+      z-index:2;
+      backdrop-filter:blur(4px);
+    }
+
+    @media (max-width:640px){
+      body{
+        padding:0;
+        background:#97181e;
+      }
+
+      .phone{
+        max-width:100%;
+        min-height:100vh;
+        border-radius:0;
+        box-shadow:none;
+        padding:18px 14px 40px;
+      }
+
+      .topbar{
+        margin-bottom:28px;
+      }
+
+      .avatar{
+        width:92px;
+        height:92px;
+      }
+
+      .username{
+        font-size:20px;
+      }
+
+      .bio{
+        font-size:12px;
+        max-width:280px;
+      }
+
+      .collection-subhead{
+        gap:10px;
+      }
+
+      .collection-subitem{
+        font-size:13px;
+      }
+
+      .grid{
+        gap:10px;
+        margin-bottom:40px;
+      }
+
+      .grid-title{
+        font-size:11px;
+      }
+
+      .join-btn{
+        font-size:14px;
+        padding:15px 24px;
+      }
+
+      .video-banner{
+        min-height:255px;
+        border-radius:16px;
+      }
+
+      .video-big{
+        font-size:30px;
+      }
+
+      .video-small{
+        font-size:14px;
+      }
+
+      .video-meta{
+        font-size:12px;
+      }
+
+      .mini-thumb{
+        width:44px;
+        height:44px;
+      }
+
+      .fake-badge{
+        width:44px;
+        height:44px;
+      }
+
+      .location-wrap{
+        border-radius:18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="phone">
+
+    <div class="topbar">
+      <button class="circle-btn" aria-label="Decoración">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+
+      <div class="topbar-right">
+        <button class="circle-btn" aria-label="Notificaciones">
+          <i class="fa-regular fa-bell"></i>
+        </button>
+        <button class="circle-btn" aria-label="Compartir">
+          <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        </button>
+      </div>
+    </div>
+
+    <section class="profile">
+      <img
+        class="avatar"
+        src="https://omleurope.com/wp-content/uploads/2025/08/cropped-cropped-LOGO_OFICIALMETE_OMLEUROPE-Pica-removebg-preview-2.png"
+        alt="OML PERÚ"
+      >
+
+      <h1 class="username">
+        OML PERÚ
+        <span class="badge"><i class="fa-solid fa-check"></i></span>
+      </h1>
+
+      <p class="bio">
+        Exportación, comunidad y productos premium.<br>
+        Todo en un solo lugar.
+      </p>
+
+      <div class="socials">
+        <a href="#" aria-label="Correo"><i class="fa-regular fa-envelope"></i></a>
+        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Web"><i class="fa-solid fa-globe"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </section>
+
+    <div class="tabs-wrap">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="panelLinks">Enlaces</button>
+        <button class="tab-btn" data-tab="panelTienda">Tienda</button>
+      </div>
+    </div>
+
+    <section id="panelLinks" class="panel active">
+
+      <a href="#" class="featured-card">
+        <div class="featured-inner">
+          <img
+            class="featured-image"
+            src="https://omleurope.com/wp-content/uploads/2025/08/IMG_3272-scaled.jpeg"
+            alt="Evento OML PERÚ"
+          >
+        </div>
+
+        <div class="card-footer">
+          <div class="footer-left">
+            <span style="font-size:15px;">⚽ 🔥</span>
+            <span class="footer-text">Evento principal de la comunidad OML PERÚ</span>
+          </div>
+          <span class="dots">⋮</span>
+        </div>
+      </a>
+
+      <h2 class="section-title">CORREO ELECTRÓNICO</h2>
+
+      <div class="block-group">
+        <a href="#" class="song-card">
+          <div class="card-footer">
+            <div class="footer-left">
+              <img
+                class="mini-thumb"
+                src="https://ugc.production.linktr.ee/8178e098-69d6-4979-919d-349b9cd15593_Screenshot-2026-03-07-015331.png?io=true&size=thumbnail-grid-carousel-v1_1"
+                alt="Correo"
+              >
+              <span class="footer-text" style="font-size:14px;">Correo principal de contacto</span>
+            </div>
+            <span class="dots">⋮</span>
+          </div>
+        </a>
+
+        <a href="#" class="song-card">
+          <div class="card-footer">
+            <div class="footer-left">
+              <img
+                class="mini-thumb"
+                src="https://ugc.production.linktr.ee/9a9387c0-f3d6-4154-9bb7-2a842d513712_Screenshot-2026-03-07-015217.png?io=true&size=thumbnail-grid-carousel-v1_1"
+                alt="Soporte"
+              >
+              <span class="footer-text" style="font-size:14px;">Soporte y atención al cliente</span>
+            </div>
+            <span class="dots">⋮</span>
+          </div>
+        </a>
+      </div>
+
+      <h2 class="section-title section-space-top">CONTACTO</h2>
+
+      <div class="block-group">
+        <a href="#" class="song-card">
+          <div class="card-footer">
+            <div class="footer-left">
+              <img
+                class="mini-thumb"
+                src="https://ugc.production.linktr.ee/32bf1af1-0c10-4e98-abba-0b9fab3c8895_Core-Members.jpeg?io=true&size=thumbnail-grid-carousel-v1_1"
+                alt="Instagram"
+              >
+              <span class="footer-text" style="font-size:14px;">Instagram de la comunidad</span>
+            </div>
+            <span class="dots">⋮</span>
+          </div>
+        </a>
+      </div>
+
+      <h2 class="section-title">COLECCIONES</h2>
+
+      <div class="collection-subhead">
+        <div class="collection-subitem">Jengibre</div>
+        <div class="collection-subitem">Curcuma</div>
+      </div>
+
+      <section class="grid">
+        <a href="#" class="grid-card">
+          <img src="https://www.senasa.gob.pe/senasacontigo/wp-content/uploads/2020/01/IMG_777-e1578081369884.jpeg" alt="Evento 1">
+          <div class="grid-bottom">
+            <div class="grid-title">Proyección del partido</div>
+            <div class="dots">⋮</div>
+          </div>
+        </a>
+
+        <a href="#" class="grid-card">
+          <img src="https://www.fao.org/typo3temp/pics/953b120538.jpg" alt="Evento 2">
+          <div class="grid-bottom">
+            <div class="grid-title">Sesión de fútbol del fin de semana</div>
+            <div class="dots">⋮</div>
+          </div>
+        </a>
+
+        <a href="#" class="grid-card">
+          <img src="https://agraria.pe/imgs/a/lx/exportaciones-peruanas-de-jengibre-fresco-caen-24-en-volumen-39423.jpg" alt="Evento 3">
+          <div class="grid-bottom">
+            <div class="grid-title">Torneo EA FC25</div>
+            <div class="dots">⋮</div>
+          </div>
+        </a>
+
+        <a href="#" class="grid-card">
+          <img src="https://panamahoy.com.pa/wp-content/uploads/2022/06/embarque-1024x576-1.jpg" alt="Evento 4">
+          <div class="grid-bottom">
+            <div class="grid-title">La Copa Cruyff</div>
+            <div class="dots">⋮</div>
+          </div>
+        </a>
+
+        <a href="#" class="grid-card">
+          <img src="https://agraria.pe/imgs/a/lx/habra-una-escasez-mundial-de-jengibre-durante-los-proximos-c-34687.jpg" alt="Evento 5">
+          <div class="grid-bottom">
+            <div class="grid-title">Apariciones en prensa</div>
+            <div class="dots">⋮</div>
+          </div>
+        </a>
+
+        <a href="#" class="grid-card">
+          <img src="https://www.critica.com.pa/sites/default/files/imagenes/2022/06/09/exportacion_contenedor_gengibre_eeuu.jpeg" alt="Evento 6">
+          <div class="grid-bottom">
+            <div class="grid-title">Nuestra historia</div>
+            <div class="dots">⋮</div>
+          </div>
+        </a>
+      </section>
+
+      <h2 class="video-title">VIDEO DEL CAMPO</h2>
+
+      <button class="video-banner" id="openVideo" type="button" aria-label="Abrir video de YouTube">
+        <img
+          src="https://omlamerica.com/wp-content/uploads/2025/08/IMG_4221-scaled.jpeg"
+          alt="Video destacado OML PERÚ"
+        >
+        <div class="video-overlay"></div>
+
+        <div class="play-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </div>
+
+        <div class="video-text">
+          <div class="video-big">OML PERÚ</div>
+          <div class="video-small">Video destacado de la comunidad</div>
+          <div class="video-meta">YouTube · OML PERÚ</div>
+        </div>
+
+        <div class="video-dots">⋮</div>
+      </button>
+
+      <h2 class="location-title">UBICACION</h2>
+
+      <div class="location-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=PISCINA%20MANAKAMI%20PICHANAKI&z=15&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          title="Ubicación en Google Maps">
+        </iframe>
+
+        <a class="map-open-btn" href="https://maps.google.com/?q=PISCINA+MANAKAMI+PICHANAKI" target="_blank" rel="noopener noreferrer">
+          Abrir en Maps
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3h7v7"></path>
+            <path d="M10 14L21 3"></path>
+            <path d="M21 14v7h-7"></path>
+            <path d="M3 10V3h7"></path>
+          </svg>
+        </a>
+
+        <div class="map-fullscreen">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3H3v5"></path>
+            <path d="M16 3h5v5"></path>
+            <path d="M21 16v5h-5"></path>
+            <path d="M8 21H3v-5"></path>
+          </svg>
+        </div>
+      </div>
+
+      <h2 class="member-title">HAZTE MIEMBRO</h2>
+
+      <a href="#" class="member-card">
+        <div class="card-footer">
+          <div class="footer-left">
+            <div class="fake-badge">ATF</div>
+            <span class="footer-text" style="font-size:14px;">Socio: All Things Football</span>
+          </div>
+          <span class="dots">⋮</span>
+        </div>
+      </a>
+
+      <a href="#" class="member-card">
+        <div class="card-footer">
+          <div class="footer-left">
+            <div class="fake-badge">FUN</div>
+            <span class="footer-text" style="font-size:14px;">Socio de comunidad: All Things Fun</span>
+          </div>
+          <span class="dots">⋮</span>
+        </div>
+      </a>
+
+      <a href="#" class="join-btn">Únete a OML PERÚ en Linktree</a>
+
+      <div class="footer-links">
+        <div>
+          <a href="#">Cookie Preferences</a> •
+          <a href="#">Report</a> •
+          <a href="#">Privacy</a>
+        </div>
+        <div>
+          <a href="#">Explore</a> •
+          <a href="#">About this account</a>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="panelTienda" class="panel">
+      <h2 class="section-title">TIENDA</h2>
+
+      <section class="grid">
+        <a href="#" class="grid-card">
+          <img src="https://ugc.production.linktr.ee/8178e098-69d6-4979-919d-349b9cd15593_Screenshot-2026-03-07-015331.png?io=true&size=thumbnail-grid-carousel-v1_1" alt="Producto 1">
+          <div class="grid-bottom">
+            <div class="grid-title">Camisetas Barça Offside</div>
+            <div class="dots">⋮</div>
+          </div>
+        </a>
+
+        <a href="#" class="grid-card">
+          <img src="https://ugc.production.linktr.ee/9a9387c0-f3d6-4154-9bb7-2a842d513712_Screenshot-2026-03-07-015217.png?io=true&size=thumbnail-grid-carousel-v1_1" alt="Producto 2">
+          <div class="grid-bottom">
+            <div class="grid-title">Fancode - Código FCBDELHI15</div>
+            <div class="dots">⋮</div>
+          </div>
+        </a>
+      </section>
+
+      <div class="footer-links">
+        <div>
+          <a href="#">Cookie Preferences</a> •
+          <a href="#">Report</a> •
+          <a href="#">Privacy</a>
+        </div>
+        <div>
+          <a href="#">Explore</a> •
+          <a href="#">About this account</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="video-modal" id="videoModal">
+    <div class="video-box">
+      <button class="close-video" id="closeVideo" aria-label="Cerrar video">×</button>
+      <div class="video-frame-wrap" id="videoFrameWrap"></div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+      });
+    });
+
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.panel');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.getAttribute('data-tab');
+
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        panels.forEach(panel => panel.classList.remove('active'));
+
+        button.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    const openVideoBtn = document.getElementById('openVideo');
+    const closeVideoBtn = document.getElementById('closeVideo');
+    const videoModal = document.getElementById('videoModal');
+    const videoFrameWrap = document.getElementById('videoFrameWrap');
+
+    function openVideo() {
+      videoFrameWrap.innerHTML = `
+        <iframe
+          src="https://youtu.be/KGjkBw9RPzg?t=8"
+          title="Video OML PERÚ"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      `;
+      videoModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideo() {
+      videoModal.classList.remove('active');
+      videoFrameWrap.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    openVideoBtn.addEventListener('click', openVideo);
+    closeVideoBtn.addEventListener('click', closeVideo);
+
+    videoModal.addEventListener('click', function(e){
+      if(e.target === videoModal){
+        closeVideo();
+      }
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        closeVideo();
+      }
+    });
+  </script>
+</body>
+</html>
