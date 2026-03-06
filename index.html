@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OML PERÚ</title>
 
+  <link rel="icon" type="image/png" href="https://omleurope.com/wp-content/uploads/2025/08/cropped-cropped-LOGO_OFICIALMETE_OMLEUROPE-Pica-removebg-preview-2.png" />
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
@@ -70,15 +72,15 @@
 
     .profile{
       text-align:center;
-      margin-bottom:28px;
+      margin-bottom:22px;
     }
 
     .avatar{
-      width:96px;
-      height:96px;
+      width:150px;
+      height:150px;
       object-fit:contain;
       display:block;
-      margin:0 auto 16px;
+      margin:0 auto 8px;
       background:transparent;
     }
 
@@ -88,6 +90,7 @@
       letter-spacing:-0.03em;
       line-height:1.05;
       margin-bottom:8px;
+      margin-top:-2px;
     }
 
     .badge{
@@ -183,7 +186,7 @@
     }
 
     .featured-card{
-      background:#005db8;
+      background:#004D98;
       padding:13px 13px 0;
       margin-bottom:26px;
       border-radius:26px;
@@ -206,7 +209,7 @@
     }
 
     .card-footer{
-      background:#005db8;
+      background:#004D98;
       min-height:60px;
       display:flex;
       align-items:center;
@@ -251,7 +254,7 @@
     }
 
     .song-card{
-      background:#005db8;
+      background:#004D98;
       margin-bottom:14px;
       border-radius:22px;
       overflow:hidden;
@@ -261,7 +264,7 @@
     .song-card .card-footer{
       min-height:66px;
       padding:0 16px;
-      background:#005db8;
+      background:#004D98;
     }
 
     .song-card .footer-left{
@@ -294,23 +297,6 @@
       margin-bottom:28px;
     }
 
-    .collection-subhead{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-bottom:14px;
-    }
-
-    .collection-subitem{
-      text-align:center;
-      font-size:14px;
-      font-weight:800;
-      text-transform:uppercase;
-      color:#fff;
-      padding:4px 0;
-      letter-spacing:-0.01em;
-    }
-
     .grid{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -319,7 +305,7 @@
     }
 
     .grid-card{
-      background:#005db8;
+      background:#004D98;
       overflow:hidden;
       border-radius:24px;
       box-shadow:0 14px 35px rgba(0,0,0,.16);
@@ -360,7 +346,6 @@
       margin-bottom:18px;
     }
 
-    /* VIDEO */
     .video-banner{
       position:relative;
       width:100%;
@@ -457,7 +442,6 @@
       color:rgba(255,255,255,.72);
     }
 
-    /* MAPA */
     .location-wrap{
       position:relative;
       width:100%;
@@ -518,7 +502,7 @@
     }
 
     .member-card{
-      background:#005db8;
+      background:#004D98;
       margin-bottom:14px;
       border-radius:22px;
       overflow:hidden;
@@ -528,7 +512,7 @@
     .member-card .card-footer{
       min-height:68px;
       padding:0 16px;
-      background:#005db8;
+      background:#004D98;
     }
 
     .member-card .footer-left{
@@ -588,7 +572,6 @@
       color:#f2f2f2;
     }
 
-    /* MODAL VIDEO */
     .video-modal{
       position:fixed;
       inset:0;
@@ -663,25 +646,19 @@
       }
 
       .avatar{
-        width:92px;
-        height:92px;
+        width:120px;
+        height:120px;
+        margin-bottom:6px;
       }
 
       .username{
         font-size:20px;
+        margin-top:-2px;
       }
 
       .bio{
         font-size:12px;
         max-width:280px;
-      }
-
-      .collection-subhead{
-        gap:10px;
-      }
-
-      .collection-subitem{
-        font-size:13px;
       }
 
       .grid{
@@ -855,11 +832,6 @@
       </div>
 
       <h2 class="section-title">COLECCIONES</h2>
-
-      <div class="collection-subhead">
-        <div class="collection-subitem">Jengibre</div>
-        <div class="collection-subitem">Curcuma</div>
-      </div>
 
       <section class="grid">
         <a href="#" class="grid-card">
@@ -1077,7 +1049,7 @@
     function openVideo() {
       videoFrameWrap.innerHTML = `
         <iframe
-          src="https://youtu.be/KGjkBw9RPzg?t=8"
+          src="https://www.youtube.com/embed/KGjkBw9RPzg?start=8&autoplay=1&rel=0"
           title="Video OML PERÚ"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
