@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="https://omleurope.com/wp-content/uploads/2025/08/cropped-cropped-LOGO_OFICIALMETE_OMLEUROPE-Pica-removebg-preview-2.png" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
     *{
@@ -23,31 +23,71 @@
     }
 
     body{
-      font-family:"Inter", Arial, sans-serif;
-      background:#97181e;
+      font-family:"Lato", sans-serif;
+      background:#8f1a20;
       color:#fff;
       display:flex;
       justify-content:center;
       align-items:flex-start;
       min-height:100vh;
-      padding:14px 18px 0;
+      padding:40px 18px 0;
     }
 
     .phone{
       width:100%;
       max-width:580px;
       background:linear-gradient(180deg,#cb2f37 0%, #c62c34 100%);
-      border-radius:18px 18px 0 0;
-      padding:20px 18px 70px;
+      border-radius:22px 22px 0 0;
       box-shadow:0 20px 46px rgba(0,0,0,.22);
       min-height:100vh;
+      overflow:hidden;
+      position:relative;
+      padding-bottom:70px;
+    }
+
+    .hero{
+      position:relative;
+      width:100%;
+      height:590px;
+      overflow:hidden;
+      border-radius:22px 22px 0 0;
+    }
+
+    .hero img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center 66%;
+      display:block;
+      transform:scale(1.06);
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to bottom,
+          rgba(0,0,0,.01) 0%,
+          rgba(0,0,0,.02) 10%,
+          rgba(203,47,55,.03) 24%,
+          rgba(203,47,55,.10) 40%,
+          rgba(203,47,55,.24) 58%,
+          rgba(203,47,55,.48) 74%,
+          rgba(198,44,52,.82) 88%,
+          rgba(198,44,52,1) 100%);
+      pointer-events:none;
     }
 
     .topbar{
+      position:absolute;
+      top:18px;
+      left:18px;
+      right:18px;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      margin-bottom:26px;
+      z-index:5;
     }
 
     .topbar-right{
@@ -60,7 +100,7 @@
       height:40px;
       border:none;
       border-radius:50%;
-      background:#e7e7e7;
+      background:#ececec;
       color:#111;
       display:flex;
       align-items:center;
@@ -71,43 +111,49 @@
     }
 
     .profile{
+      position:relative;
+      z-index:6;
       text-align:center;
-      margin-bottom:22px;
+      margin-top:-222px;
+      padding:0 18px 0;
     }
 
     .avatar{
-      width:150px;
-      height:150px;
+      width:165px;
+      height:165px;
       object-fit:contain;
       display:block;
-      margin:0 auto 8px;
+      margin:0 auto 4px;
       background:transparent;
+      position:relative;
+      z-index:7;
+      filter:drop-shadow(0 10px 18px rgba(0,0,0,.18));
     }
 
     .username{
-      font-size:22px;
-      font-weight:800;
+      font-size:17px;
+      font-weight:900;
       letter-spacing:-0.03em;
-      line-height:1.05;
+      line-height:1.2;
       margin-bottom:8px;
-      margin-top:-2px;
+      margin-top:-4px;
     }
 
     .badge{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      width:18px;
-      height:18px;
+      width:19px;
+      height:19px;
       border-radius:50%;
       background:#18a8ff;
       font-size:10px;
-      margin-left:6px;
+      margin-left:7px;
       vertical-align:middle;
     }
 
     .bio{
-      font-size:13px;
+      font-size:16px;
       font-weight:700;
       line-height:1.45;
       color:#f3f3f3;
@@ -119,20 +165,25 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      gap:16px;
+      gap:18px;
       flex-wrap:wrap;
       margin-bottom:18px;
     }
 
     .socials a{
-      width:30px;
-      height:30px;
+      width:32px;
+      height:32px;
       color:#fff;
       text-decoration:none;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:18px;
+      font-size:28px;
+      line-height:1;
+    }
+
+    .content{
+      padding:0 18px 0;
     }
 
     .tabs-wrap{
@@ -156,9 +207,10 @@
       border-radius:999px;
       background:transparent;
       color:#111;
-      font-size:14px;
-      font-weight:800;
+      font-size:16px;
+      font-weight:900;
       cursor:pointer;
+      font-family:"Lato", sans-serif;
     }
 
     .tab-btn.active{
@@ -228,8 +280,8 @@
     }
 
     .footer-text{
-      font-size:13px;
-      font-weight:500;
+      font-size:16px;
+      font-weight:700;
       color:#fff;
       white-space:nowrap;
       overflow:hidden;
@@ -278,12 +330,13 @@
       white-space:normal;
       overflow:visible;
       text-overflow:unset;
+      font-size:16px !important;
     }
 
     .section-title{
       text-align:center;
-      font-size:14px;
-      font-weight:800;
+      font-size:16px;
+      font-weight:900;
       text-transform:uppercase;
       letter-spacing:-0.01em;
       margin-bottom:16px;
@@ -329,18 +382,125 @@
     }
 
     .grid-title{
-      font-size:12px;
+      font-size:16px;
       line-height:1.24;
       color:#fff;
-      font-weight:500;
+      font-weight:700;
+    }
+
+    /* ===== HISTORIA SLIDER ===== */
+    .story-section{
+      margin:6px 0 36px;
+    }
+
+    .story-heading{
+      text-align:center;
+      font-size:16px;
+      font-weight:900;
+      margin-bottom:16px;
+    }
+
+    .story-slider-wrap{
+      position:relative;
+      width:100%;
+    }
+
+    .story-slider{
+      display:flex;
+      gap:14px;
+      overflow-x:auto;
+      scroll-behavior:smooth;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+      scroll-snap-type:x mandatory;
+      padding-bottom:4px;
+    }
+
+    .story-slider::-webkit-scrollbar{
+      display:none;
+    }
+
+    .story-card{
+      flex:0 0 calc((100% - 28px) / 2.35);
+      min-width:0;
+      background:#0057ae;
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 14px 35px rgba(0,0,0,.16);
+      scroll-snap-align:start;
+    }
+
+    .story-card img{
+      width:100%;
+      height:255px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .story-body{
+      min-height:82px;
+      padding:12px 14px 14px;
+      position:relative;
+    }
+
+    .story-title{
+      font-size:14px;
+      line-height:1.2;
+      font-weight:700;
+      color:#fff;
+      padding-right:18px;
+    }
+
+    .story-sub{
+      margin-top:5px;
+      font-size:12px;
+      color:rgba(255,255,255,.72);
+      line-height:1.1;
+    }
+
+    .story-menu{
+      position:absolute;
+      right:12px;
+      bottom:12px;
+      font-size:18px;
+      color:rgba(255,255,255,.72);
+      line-height:1;
+    }
+
+    .story-nav{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:44px;
+      height:44px;
+      border:none;
+      border-radius:50%;
+      background:rgba(235,235,235,.96);
+      color:#111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      z-index:5;
+      box-shadow:0 8px 20px rgba(0,0,0,.18);
+      font-size:18px;
+    }
+
+    .story-nav.prev{
+      left:10px;
+      display:none;
+    }
+
+    .story-nav.next{
+      right:10px;
     }
 
     .video-title,
     .location-title,
     .member-title{
       text-align:center;
-      font-size:14px;
-      font-weight:800;
+      font-size:16px;
+      font-weight:900;
       text-transform:uppercase;
       letter-spacing:-0.01em;
       margin-bottom:18px;
@@ -357,6 +517,7 @@
       background:#111;
       border:none;
       box-shadow:0 14px 35px rgba(0,0,0,.16);
+      font-family:"Lato", sans-serif;
     }
 
     .video-banner img{
@@ -417,7 +578,7 @@
     }
 
     .video-small{
-      font-size:18px;
+      font-size:16px;
       font-weight:700;
       color:#f2f2f2;
       line-height:1.2;
@@ -426,8 +587,8 @@
     }
 
     .video-meta{
-      font-size:14px;
-      font-weight:600;
+      font-size:16px;
+      font-weight:700;
       color:#efefef;
       opacity:.95;
     }
@@ -472,7 +633,7 @@
       align-items:center;
       gap:6px;
       padding:8px 10px;
-      font-size:12px;
+      font-size:16px;
       font-weight:700;
       color:#1a73e8;
       background:rgba(255,255,255,.96);
@@ -526,6 +687,7 @@
       white-space:normal;
       overflow:visible;
       text-overflow:unset;
+      font-size:16px !important;
     }
 
     .fake-badge{
@@ -553,17 +715,17 @@
       color:#111;
       border-radius:999px;
       text-decoration:none;
-      font-size:15px;
-      font-weight:800;
+      font-size:16px;
+      font-weight:900;
       letter-spacing:-0.01em;
     }
 
     .footer-links{
       text-align:center;
-      font-size:11px;
+      font-size:16px;
       line-height:1.7;
       color:#f2f2f2;
-      font-weight:500;
+      font-weight:700;
       margin-bottom:12px;
     }
 
@@ -638,27 +800,53 @@
         min-height:100vh;
         border-radius:0;
         box-shadow:none;
-        padding:18px 14px 40px;
+      }
+
+      .hero{
+        height:530px;
+        border-radius:0;
+      }
+
+      .hero img{
+        object-position:center 68%;
+        transform:scale(1.05);
       }
 
       .topbar{
-        margin-bottom:28px;
+        top:16px;
+        left:14px;
+        right:14px;
+      }
+
+      .profile{
+        margin-top:-195px;
+        padding:0 14px 0;
       }
 
       .avatar{
-        width:120px;
-        height:120px;
-        margin-bottom:6px;
+        width:145px;
+        height:145px;
+        margin-bottom:2px;
       }
 
       .username{
-        font-size:20px;
-        margin-top:-2px;
+        font-size:16px;
+        margin-bottom:8px;
       }
 
       .bio{
-        font-size:12px;
+        font-size:16px;
         max-width:280px;
+      }
+
+      .socials a{
+        width:32px;
+        height:32px;
+        font-size:21px;
+      }
+
+      .content{
+        padding:0 14px 0;
       }
 
       .grid{
@@ -666,12 +854,30 @@
         margin-bottom:40px;
       }
 
+      .story-card{
+        flex:0 0 calc((100% - 14px) / 1.75);
+        border-radius:24px;
+      }
+
+      .story-card img{
+        height:215px;
+      }
+
+      .story-body{
+        min-height:78px;
+      }
+
+      .story-nav{
+        width:42px;
+        height:42px;
+      }
+
       .grid-title{
-        font-size:11px;
+        font-size:16px;
       }
 
       .join-btn{
-        font-size:14px;
+        font-size:16px;
         padding:15px 24px;
       }
 
@@ -685,11 +891,11 @@
       }
 
       .video-small{
-        font-size:14px;
+        font-size:16px;
       }
 
       .video-meta{
-        font-size:12px;
+        font-size:16px;
       }
 
       .mini-thumb{
@@ -712,20 +918,27 @@
 
   <main class="phone">
 
-    <div class="topbar">
-      <button class="circle-btn" aria-label="Decoración">
-        <i class="fa-solid fa-sun"></i>
-      </button>
+    <section class="hero">
+      <img
+        src="https://logistica360.pe/wp-content/uploads/2023/09/jengibre.jpg"
+        alt="Portada OML PERÚ"
+      >
 
-      <div class="topbar-right">
-        <button class="circle-btn" aria-label="Notificaciones">
-          <i class="fa-regular fa-bell"></i>
+      <div class="topbar">
+        <button class="circle-btn" aria-label="Decoración">
+          <i class="fa-solid fa-sun"></i>
         </button>
-        <button class="circle-btn" aria-label="Compartir">
-          <i class="fa-solid fa-arrow-up-from-bracket"></i>
-        </button>
+
+        <div class="topbar-right">
+          <button class="circle-btn" aria-label="Notificaciones">
+            <i class="fa-regular fa-bell"></i>
+          </button>
+          <button class="circle-btn" aria-label="Compartir">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
 
     <section class="profile">
       <img
@@ -754,261 +967,315 @@
       </div>
     </section>
 
-    <div class="tabs-wrap">
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="panelLinks">Enlaces</button>
-        <button class="tab-btn" data-tab="panelTienda">Tienda</button>
+    <div class="content">
+      <div class="tabs-wrap">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="panelLinks">Enlaces</button>
+          <button class="tab-btn" data-tab="panelTienda">Tienda</button>
+        </div>
       </div>
-    </div>
 
-    <section id="panelLinks" class="panel active">
+      <section id="panelLinks" class="panel active">
 
-      <a href="#" class="featured-card">
-        <div class="featured-inner">
+        <a href="#" class="featured-card">
+          <div class="featured-inner">
+            <img
+              class="featured-image"
+              src="https://omleurope.com/wp-content/uploads/2025/08/IMG_3272-scaled.jpeg"
+              alt="Evento OML PERÚ"
+            >
+          </div>
+
+          <div class="card-footer">
+            <div class="footer-left">
+              <span style="font-size:16px;">⚽ 🔥</span>
+              <span class="footer-text">Evento principal de la comunidad OML PERÚ</span>
+            </div>
+            <span class="dots">⋮</span>
+          </div>
+        </a>
+
+        <h2 class="section-title">CORREO ELECTRÓNICO</h2>
+
+        <div class="block-group">
+          <a href="#" class="song-card">
+            <div class="card-footer">
+              <div class="footer-left">
+                <img
+                  class="mini-thumb"
+                  src="https://ugc.production.linktr.ee/8178e098-69d6-4979-919d-349b9cd15593_Screenshot-2026-03-07-015331.png?io=true&size=thumbnail-grid-carousel-v1_1"
+                  alt="Correo"
+                >
+                <span class="footer-text">Correo principal de contacto</span>
+              </div>
+              <span class="dots">⋮</span>
+            </div>
+          </a>
+
+          <a href="#" class="song-card">
+            <div class="card-footer">
+              <div class="footer-left">
+                <img
+                  class="mini-thumb"
+                  src="https://ugc.production.linktr.ee/9a9387c0-f3d6-4154-9bb7-2a842d513712_Screenshot-2026-03-07-015217.png?io=true&size=thumbnail-grid-carousel-v1_1"
+                  alt="Soporte"
+                >
+                <span class="footer-text">Soporte y atención al cliente</span>
+              </div>
+              <span class="dots">⋮</span>
+            </div>
+          </a>
+        </div>
+
+        <h2 class="section-title section-space-top">CONTACTO</h2>
+
+        <div class="block-group">
+          <a href="#" class="song-card">
+            <div class="card-footer">
+              <div class="footer-left">
+                <img
+                  class="mini-thumb"
+                  src="https://ugc.production.linktr.ee/32bf1af1-0c10-4e98-abba-0b9fab3c8895_Core-Members.jpeg?io=true&size=thumbnail-grid-carousel-v1_1"
+                  alt="Instagram"
+                >
+                <span class="footer-text">Instagram de la comunidad</span>
+              </div>
+              <span class="dots">⋮</span>
+            </div>
+          </a>
+        </div>
+
+        <h2 class="section-title">COLECCIONES</h2>
+
+        <section class="grid">
+          <a href="#" class="grid-card">
+            <img src="https://www.senasa.gob.pe/senasacontigo/wp-content/uploads/2020/01/IMG_777-e1578081369884.jpeg" alt="Evento 1">
+            <div class="grid-bottom">
+              <div class="grid-title">Proyección del partido</div>
+              <div class="dots">⋮</div>
+            </div>
+          </a>
+
+          <a href="#" class="grid-card">
+            <img src="https://www.fao.org/typo3temp/pics/953b120538.jpg" alt="Evento 2">
+            <div class="grid-bottom">
+              <div class="grid-title">Sesión de fútbol del fin de semana</div>
+              <div class="dots">⋮</div>
+            </div>
+          </a>
+
+          <a href="#" class="grid-card">
+            <img src="https://agraria.pe/imgs/a/lx/exportaciones-peruanas-de-jengibre-fresco-caen-24-en-volumen-39423.jpg" alt="Evento 3">
+            <div class="grid-bottom">
+              <div class="grid-title">Torneo EA FC25</div>
+              <div class="dots">⋮</div>
+            </div>
+          </a>
+
+          <a href="#" class="grid-card">
+            <img src="https://panamahoy.com.pa/wp-content/uploads/2022/06/embarque-1024x576-1.jpg" alt="Evento 4">
+            <div class="grid-bottom">
+              <div class="grid-title">La Copa Cruyff</div>
+              <div class="dots">⋮</div>
+            </div>
+          </a>
+
+          <a href="#" class="grid-card">
+            <img src="https://agraria.pe/imgs/a/lx/habra-una-escasez-mundial-de-jengibre-durante-los-proximos-c-34687.jpg" alt="Evento 5">
+            <div class="grid-bottom">
+              <div class="grid-title">Apariciones en prensa</div>
+              <div class="dots">⋮</div>
+            </div>
+          </a>
+
+          <a href="#" class="grid-card">
+            <img src="https://www.critica.com.pa/sites/default/files/imagenes/2022/06/09/exportacion_contenedor_gengibre_eeuu.jpeg" alt="Evento 6">
+            <div class="grid-bottom">
+              <div class="grid-title">Nuestra historia</div>
+              <div class="dots">⋮</div>
+            </div>
+          </a>
+        </section>
+
+        <section class="story-section">
+          <h2 class="story-heading">Nuestra historia, reconocimiento y propósito</h2>
+
+          <div class="story-slider-wrap">
+            <button class="story-nav prev" id="storyPrev" type="button" aria-label="Anterior">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="story-slider" id="storySlider">
+              <a href="#" class="story-card">
+                <img
+                  src="https://ugc.production.linktr.ee/32bf1af1-0c10-4e98-abba-0b9fab3c8895_Core-Members.jpeg?io=true&size=thumbnail-grid-carousel-v1_1"
+                  alt="Nuestra historia"
+                >
+                <div class="story-body">
+                  <div class="story-title">Un sueño hecho realidad: el inspirador viaje del FC...</div>
+                  <div class="story-sub">Documento</div>
+                  <div class="story-menu">⋮</div>
+                </div>
+              </a>
+
+              <a href="#" class="story-card">
+                <img
+                  src="https://ugc.production.linktr.ee/f49a502a-7237-4d9a-84c2-5d141779ce97_Screenshot-2025-02-13-135911.png?io=true&size=thumbnail-grid-carousel-v1_1"
+                  alt="Reconocimiento"
+                >
+                <div class="story-body">
+                  <div class="story-title">Destacado en The New Indian Express</div>
+                  <div class="story-sub"></div>
+                  <div class="story-menu">⋮</div>
+                </div>
+              </a>
+
+              <a href="#" class="story-card">
+                <img
+                  src="https://ugc.production.linktr.ee/57ed9669-9541-4eda-ad9a-a546737753a2_GhkHfQkW4AA6Hsi-copia.jpeg?io=true&size=thumbnail-grid-carousel-v1_1"
+                  alt="Propósito"
+                >
+                <div class="story-body">
+                  <div class="story-title">Trabajando por una causa #MásQueUnPenya</div>
+                  <div class="story-sub"></div>
+                  <div class="story-menu">⋮</div>
+                </div>
+              </a>
+            </div>
+
+            <button class="story-nav next" id="storyNext" type="button" aria-label="Siguiente">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <h2 class="video-title">VIDEO DEL CAMPO</h2>
+
+        <button class="video-banner" id="openVideo" type="button" aria-label="Abrir video de YouTube">
           <img
-            class="featured-image"
-            src="https://omleurope.com/wp-content/uploads/2025/08/IMG_3272-scaled.jpeg"
-            alt="Evento OML PERÚ"
+            src="https://omlamerica.com/wp-content/uploads/2025/08/IMG_4221-scaled.jpeg"
+            alt="Video destacado OML PERÚ"
           >
+          <div class="video-overlay"></div>
+
+          <div class="play-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+          </div>
+
+          <div class="video-text">
+            <div class="video-big">OML PERÚ</div>
+            <div class="video-small">Video destacado de la comunidad</div>
+            <div class="video-meta">YouTube · OML PERÚ</div>
+          </div>
+
+          <div class="video-dots">⋮</div>
+        </button>
+
+        <h2 class="location-title">UBICACIÓN</h2>
+
+        <div class="location-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=PISCINA%20MANAKAMI%20PICHANAKI&z=15&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            title="Ubicación en Google Maps">
+          </iframe>
+
+          <a class="map-open-btn" href="https://maps.google.com/?q=PISCINA+MANAKAMI+PICHANAKI" target="_blank" rel="noopener noreferrer">
+            Abrir en Maps
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 3h7v7"></path>
+              <path d="M10 14L21 3"></path>
+              <path d="M21 14v7h-7"></path>
+              <path d="M3 10V3h7"></path>
+            </svg>
+          </a>
+
+          <div class="map-fullscreen">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H3v5"></path>
+              <path d="M16 3h5v5"></path>
+              <path d="M21 16v5h-5"></path>
+              <path d="M8 21H3v-5"></path>
+            </svg>
+          </div>
         </div>
 
-        <div class="card-footer">
-          <div class="footer-left">
-            <span style="font-size:15px;">⚽ 🔥</span>
-            <span class="footer-text">Evento principal de la comunidad OML PERÚ</span>
+        <h2 class="member-title">HAZTE MIEMBRO</h2>
+
+        <a href="#" class="member-card">
+          <div class="card-footer">
+            <div class="footer-left">
+              <div class="fake-badge">ATF</div>
+              <span class="footer-text">Socio: All Things Football</span>
+            </div>
+            <span class="dots">⋮</span>
           </div>
-          <span class="dots">⋮</span>
+        </a>
+
+        <a href="#" class="member-card">
+          <div class="card-footer">
+            <div class="footer-left">
+              <div class="fake-badge">FUN</div>
+              <span class="footer-text">Socio de comunidad: All Things Fun</span>
+            </div>
+            <span class="dots">⋮</span>
+          </div>
+        </a>
+
+        <a href="#" class="join-btn">Únete a OML PERÚ en Linktree</a>
+
+        <div class="footer-links">
+          <div>
+            <a href="#">Cookie Preferences</a> •
+            <a href="#">Report</a> •
+            <a href="#">Privacy</a>
+          </div>
+          <div>
+            <a href="#">Explore</a> •
+            <a href="#">About this account</a>
+          </div>
         </div>
-      </a>
 
-      <h2 class="section-title">CORREO ELECTRÓNICO</h2>
-
-      <div class="block-group">
-        <a href="#" class="song-card">
-          <div class="card-footer">
-            <div class="footer-left">
-              <img
-                class="mini-thumb"
-                src="https://ugc.production.linktr.ee/8178e098-69d6-4979-919d-349b9cd15593_Screenshot-2026-03-07-015331.png?io=true&size=thumbnail-grid-carousel-v1_1"
-                alt="Correo"
-              >
-              <span class="footer-text" style="font-size:14px;">Correo principal de contacto</span>
-            </div>
-            <span class="dots">⋮</span>
-          </div>
-        </a>
-
-        <a href="#" class="song-card">
-          <div class="card-footer">
-            <div class="footer-left">
-              <img
-                class="mini-thumb"
-                src="https://ugc.production.linktr.ee/9a9387c0-f3d6-4154-9bb7-2a842d513712_Screenshot-2026-03-07-015217.png?io=true&size=thumbnail-grid-carousel-v1_1"
-                alt="Soporte"
-              >
-              <span class="footer-text" style="font-size:14px;">Soporte y atención al cliente</span>
-            </div>
-            <span class="dots">⋮</span>
-          </div>
-        </a>
-      </div>
-
-      <h2 class="section-title section-space-top">CONTACTO</h2>
-
-      <div class="block-group">
-        <a href="#" class="song-card">
-          <div class="card-footer">
-            <div class="footer-left">
-              <img
-                class="mini-thumb"
-                src="https://ugc.production.linktr.ee/32bf1af1-0c10-4e98-abba-0b9fab3c8895_Core-Members.jpeg?io=true&size=thumbnail-grid-carousel-v1_1"
-                alt="Instagram"
-              >
-              <span class="footer-text" style="font-size:14px;">Instagram de la comunidad</span>
-            </div>
-            <span class="dots">⋮</span>
-          </div>
-        </a>
-      </div>
-
-      <h2 class="section-title">COLECCIONES</h2>
-
-      <section class="grid">
-        <a href="#" class="grid-card">
-          <img src="https://www.senasa.gob.pe/senasacontigo/wp-content/uploads/2020/01/IMG_777-e1578081369884.jpeg" alt="Evento 1">
-          <div class="grid-bottom">
-            <div class="grid-title">Proyección del partido</div>
-            <div class="dots">⋮</div>
-          </div>
-        </a>
-
-        <a href="#" class="grid-card">
-          <img src="https://www.fao.org/typo3temp/pics/953b120538.jpg" alt="Evento 2">
-          <div class="grid-bottom">
-            <div class="grid-title">Sesión de fútbol del fin de semana</div>
-            <div class="dots">⋮</div>
-          </div>
-        </a>
-
-        <a href="#" class="grid-card">
-          <img src="https://agraria.pe/imgs/a/lx/exportaciones-peruanas-de-jengibre-fresco-caen-24-en-volumen-39423.jpg" alt="Evento 3">
-          <div class="grid-bottom">
-            <div class="grid-title">Torneo EA FC25</div>
-            <div class="dots">⋮</div>
-          </div>
-        </a>
-
-        <a href="#" class="grid-card">
-          <img src="https://panamahoy.com.pa/wp-content/uploads/2022/06/embarque-1024x576-1.jpg" alt="Evento 4">
-          <div class="grid-bottom">
-            <div class="grid-title">La Copa Cruyff</div>
-            <div class="dots">⋮</div>
-          </div>
-        </a>
-
-        <a href="#" class="grid-card">
-          <img src="https://agraria.pe/imgs/a/lx/habra-una-escasez-mundial-de-jengibre-durante-los-proximos-c-34687.jpg" alt="Evento 5">
-          <div class="grid-bottom">
-            <div class="grid-title">Apariciones en prensa</div>
-            <div class="dots">⋮</div>
-          </div>
-        </a>
-
-        <a href="#" class="grid-card">
-          <img src="https://www.critica.com.pa/sites/default/files/imagenes/2022/06/09/exportacion_contenedor_gengibre_eeuu.jpeg" alt="Evento 6">
-          <div class="grid-bottom">
-            <div class="grid-title">Nuestra historia</div>
-            <div class="dots">⋮</div>
-          </div>
-        </a>
       </section>
 
-      <h2 class="video-title">VIDEO DEL CAMPO</h2>
+      <section id="panelTienda" class="panel">
+        <h2 class="section-title">TIENDA</h2>
 
-      <button class="video-banner" id="openVideo" type="button" aria-label="Abrir video de YouTube">
-        <img
-          src="https://omlamerica.com/wp-content/uploads/2025/08/IMG_4221-scaled.jpeg"
-          alt="Video destacado OML PERÚ"
-        >
-        <div class="video-overlay"></div>
+        <section class="grid">
+          <a href="#" class="grid-card">
+            <img src="https://ugc.production.linktr.ee/8178e098-69d6-4979-919d-349b9cd15593_Screenshot-2026-03-07-015331.png?io=true&size=thumbnail-grid-carousel-v1_1" alt="Producto 1">
+            <div class="grid-bottom">
+              <div class="grid-title">Camisetas Barça Offside</div>
+              <div class="dots">⋮</div>
+            </div>
+          </a>
 
-        <div class="play-center">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
-            <path d="M8 5v14l11-7z"></path>
-          </svg>
-        </div>
+          <a href="#" class="grid-card">
+            <img src="https://ugc.production.linktr.ee/9a9387c0-f3d6-4154-9bb7-2a842d513712_Screenshot-2026-03-07-015217.png?io=true&size=thumbnail-grid-carousel-v1_1" alt="Producto 2">
+            <div class="grid-bottom">
+              <div class="grid-title">Fancode - Código FCBDELHI15</div>
+              <div class="dots">⋮</div>
+            </div>
+          </a>
+        </section>
 
-        <div class="video-text">
-          <div class="video-big">OML PERÚ</div>
-          <div class="video-small">Video destacado de la comunidad</div>
-          <div class="video-meta">YouTube · OML PERÚ</div>
-        </div>
-
-        <div class="video-dots">⋮</div>
-      </button>
-
-      <h2 class="location-title">UBICACION</h2>
-
-      <div class="location-wrap">
-        <iframe
-          src="https://www.google.com/maps?q=PISCINA%20MANAKAMI%20PICHANAKI&z=15&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-          title="Ubicación en Google Maps">
-        </iframe>
-
-        <a class="map-open-btn" href="https://maps.google.com/?q=PISCINA+MANAKAMI+PICHANAKI" target="_blank" rel="noopener noreferrer">
-          Abrir en Maps
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 3h7v7"></path>
-            <path d="M10 14L21 3"></path>
-            <path d="M21 14v7h-7"></path>
-            <path d="M3 10V3h7"></path>
-          </svg>
-        </a>
-
-        <div class="map-fullscreen">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 3H3v5"></path>
-            <path d="M16 3h5v5"></path>
-            <path d="M21 16v5h-5"></path>
-            <path d="M8 21H3v-5"></path>
-          </svg>
-        </div>
-      </div>
-
-      <h2 class="member-title">HAZTE MIEMBRO</h2>
-
-      <a href="#" class="member-card">
-        <div class="card-footer">
-          <div class="footer-left">
-            <div class="fake-badge">ATF</div>
-            <span class="footer-text" style="font-size:14px;">Socio: All Things Football</span>
+        <div class="footer-links">
+          <div>
+            <a href="#">Cookie Preferences</a> •
+            <a href="#">Report</a> •
+            <a href="#">Privacy</a>
           </div>
-          <span class="dots">⋮</span>
-        </div>
-      </a>
-
-      <a href="#" class="member-card">
-        <div class="card-footer">
-          <div class="footer-left">
-            <div class="fake-badge">FUN</div>
-            <span class="footer-text" style="font-size:14px;">Socio de comunidad: All Things Fun</span>
+          <div>
+            <a href="#">Explore</a> •
+            <a href="#">About this account</a>
           </div>
-          <span class="dots">⋮</span>
         </div>
-      </a>
-
-      <a href="#" class="join-btn">Únete a OML PERÚ en Linktree</a>
-
-      <div class="footer-links">
-        <div>
-          <a href="#">Cookie Preferences</a> •
-          <a href="#">Report</a> •
-          <a href="#">Privacy</a>
-        </div>
-        <div>
-          <a href="#">Explore</a> •
-          <a href="#">About this account</a>
-        </div>
-      </div>
-
-    </section>
-
-    <section id="panelTienda" class="panel">
-      <h2 class="section-title">TIENDA</h2>
-
-      <section class="grid">
-        <a href="#" class="grid-card">
-          <img src="https://ugc.production.linktr.ee/8178e098-69d6-4979-919d-349b9cd15593_Screenshot-2026-03-07-015331.png?io=true&size=thumbnail-grid-carousel-v1_1" alt="Producto 1">
-          <div class="grid-bottom">
-            <div class="grid-title">Camisetas Barça Offside</div>
-            <div class="dots">⋮</div>
-          </div>
-        </a>
-
-        <a href="#" class="grid-card">
-          <img src="https://ugc.production.linktr.ee/9a9387c0-f3d6-4154-9bb7-2a842d513712_Screenshot-2026-03-07-015217.png?io=true&size=thumbnail-grid-carousel-v1_1" alt="Producto 2">
-          <div class="grid-bottom">
-            <div class="grid-title">Fancode - Código FCBDELHI15</div>
-            <div class="dots">⋮</div>
-          </div>
-        </a>
       </section>
-
-      <div class="footer-links">
-        <div>
-          <a href="#">Cookie Preferences</a> •
-          <a href="#">Report</a> •
-          <a href="#">Privacy</a>
-        </div>
-        <div>
-          <a href="#">Explore</a> •
-          <a href="#">About this account</a>
-        </div>
-      </div>
-    </section>
+    </div>
 
   </main>
 
@@ -1079,6 +1346,52 @@
         closeVideo();
       }
     });
+
+    /* ===== SLIDER HISTORIA ===== */
+    const storySlider = document.getElementById('storySlider');
+    const storyPrev = document.getElementById('storyPrev');
+    const storyNext = document.getElementById('storyNext');
+
+    function getStoryStep() {
+      const firstCard = storySlider.querySelector('.story-card');
+      if (!firstCard) return 300;
+      const gap = 14;
+      return firstCard.offsetWidth + gap;
+    }
+
+    function updateStoryButtons() {
+      const maxScroll = storySlider.scrollWidth - storySlider.clientWidth;
+
+      if (storySlider.scrollLeft <= 10) {
+        storyPrev.style.display = 'none';
+      } else {
+        storyPrev.style.display = 'flex';
+      }
+
+      if (storySlider.scrollLeft >= maxScroll - 10) {
+        storyNext.style.display = 'none';
+      } else {
+        storyNext.style.display = 'flex';
+      }
+    }
+
+    storyNext.addEventListener('click', () => {
+      storySlider.scrollBy({
+        left: getStoryStep(),
+        behavior: 'smooth'
+      });
+    });
+
+    storyPrev.addEventListener('click', () => {
+      storySlider.scrollBy({
+        left: -getStoryStep(),
+        behavior: 'smooth'
+      });
+    });
+
+    storySlider.addEventListener('scroll', updateStoryButtons);
+    window.addEventListener('load', updateStoryButtons);
+    window.addEventListener('resize', updateStoryButtons);
   </script>
 </body>
 </html>
