@@ -42,7 +42,7 @@
       min-height:100vh;
       overflow:hidden;
       position:relative;
-      padding-bottom:70px;
+      padding-bottom:40px;
     }
 
     .hero{
@@ -388,7 +388,6 @@
       font-weight:700;
     }
 
-    /* ===== HISTORIA SLIDER ===== */
     .story-section{
       margin:6px 0 36px;
     }
@@ -710,35 +709,107 @@
       font-weight:900;
     }
 
-    .join-btn{
-      display:block;
-      width:max-content;
-      margin:28px auto 32px;
-      padding:16px 28px;
-      background:#fff;
-      color:#111;
-      border-radius:999px;
-      text-decoration:none;
-      font-size:16px;
-      font-weight:900;
-      letter-spacing:-0.01em;
+    .instagram-card{
+      background:#0057ae;
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:0 14px 35px rgba(0,0,0,.16);
+      margin-top:10px;
     }
 
-    .footer-links{
+    .instagram-grid{
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr;
+      grid-template-rows:140px 140px;
+      gap:2px;
+      background:#0057ae;
+      padding:12px 12px 0;
+    }
+
+    .instagram-grid img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .instagram-grid .big{
+      grid-row:1 / span 2;
+      border-radius:22px 0 0 0;
+      overflow:hidden;
+    }
+
+    .instagram-grid .small1{
+      overflow:hidden;
+    }
+
+    .instagram-grid .small2{
+      border-radius:0 22px 0 0;
+      overflow:hidden;
+    }
+
+    .instagram-grid .small3{
+      overflow:hidden;
+    }
+
+    .instagram-grid .small4{
+      border-radius:0 0 22px 0;
+      overflow:hidden;
+    }
+
+    .instagram-info{
       text-align:center;
-      font-size:16px;
-      line-height:1.7;
-      color:#f2f2f2;
+      padding:14px 18px 14px;
+      position:relative;
+    }
+
+    .instagram-title{
+      font-size:18px;
       font-weight:700;
+      color:#fff;
+      margin-bottom:2px;
+    }
+
+    .instagram-handle{
+      font-size:14px;
+      color:rgba(255,255,255,.78);
       margin-bottom:12px;
     }
 
-    .footer-links a{
+    .instagram-btn{
+      display:inline-block;
+      background:#2a79dc;
+      color:#fff;
       text-decoration:none;
-      color:#f2f2f2;
+      border-radius:999px;
+      padding:8px 18px;
+      font-size:14px;
+      font-weight:700;
     }
 
-    /* ===== MODAL VIDEO ===== */
+    .instagram-dots{
+      position:absolute;
+      right:18px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:20px;
+      color:rgba(255,255,255,.75);
+    }
+
+    .footer-mini{
+      text-align:center;
+      color:rgba(255,255,255,.90);
+      font-size:14px;
+      line-height:1.8;
+      font-weight:700;
+      padding:22px 6px 0;
+    }
+
+    .footer-mini a{
+      color:rgba(255,255,255,.90);
+      text-decoration:none;
+    }
+
     .video-modal{
       position:fixed;
       inset:0;
@@ -794,7 +865,6 @@
       backdrop-filter:blur(4px);
     }
 
-    /* ===== MODAL VISOR HISTORIA ===== */
     .story-viewer-modal{
       position:fixed;
       inset:0;
@@ -1003,11 +1073,6 @@
         font-size:16px;
       }
 
-      .join-btn{
-        font-size:16px;
-        padding:15px 24px;
-      }
-
       .video-banner{
         min-height:255px;
         border-radius:16px;
@@ -1037,6 +1102,25 @@
 
       .location-wrap{
         border-radius:18px;
+      }
+
+      .instagram-grid{
+        grid-template-columns:1.15fr 1fr 1fr;
+        grid-template-rows:120px 120px;
+      }
+
+      .instagram-title{
+        font-size:16px;
+      }
+
+      .instagram-handle{
+        font-size:13px;
+      }
+
+      .footer-mini{
+        font-size:13px;
+        line-height:1.9;
+        padding-top:26px;
       }
 
       .story-viewer-box{
@@ -1397,18 +1481,43 @@
           </div>
         </a>
 
-        <a href="#" class="join-btn">Únete a OML PERÚ en Linktree</a>
+        <section class="instagram-card">
+          <div class="instagram-grid">
+            <div class="big">
+              <img src="https://scontent-sea1-1.cdninstagram.com/v/t51.82787-15/649087669_17961906750025342_5266785751441148619_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=9KnsNMi97DkQ7kNvwEto2Yv&_nc_oc=AdmE7Ox4I77tmAOUpzOhi1pX8nI4BJ2OV8dUhP4KG7eX77GBZRHTFRFet9xCMurVRqU&_nc_zt=23&_nc_ht=scontent-sea1-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=EhW_ZIGfWsC5LqPVMubMxw&_nc_tpa=Q5bMBQFSFQxVuNpLV2Eq-LNZu_C1G4tXm1TRJ37LWO_zOklwPxgMkJJxaKdDsOUSymPKMLPqUssDnXle&oh=00_AfyNs-wvfBIDpkAFszQulWyrOOwDa3R-pZLFWj1aXmmMmw&oe=69B25A8B" alt="Instagram 1">
+            </div>
 
-        <div class="footer-links">
-          <div>
-            <a href="#">Cookie Preferences</a> •
-            <a href="#">Report</a> •
-            <a href="#">Privacy</a>
+            <div class="small1">
+              <img src="https://scontent-sea5-1.cdninstagram.com/v/t51.82787-15/645799479_17961460500025342_2613259564422850768_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=HKE_eMwPlLkQ7kNvwHa_PkZ&_nc_oc=AdlS2GWWPiQS5dWBRYSLfmsUi3xv6jH9d0rX54i7rHvFqwOmMhV-ebMseBvtu-nLMv4&_nc_zt=23&_nc_ht=scontent-sea5-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=EhW_ZIGfWsC5LqPVMubMxw&_nc_tpa=Q5bMBQH4AQ4iwJm5tKwKc5BfeM17YAnV7wCdKg4iyVQdRr-ZbxwD1JUf2exWQtn7j1ifW-LLkSoneSj4&oh=00_AfwzilflEc9giuUuUtJ5PfmUSiTY-mSV7aIt6P6ecAIBxg&oe=69B25988" alt="Instagram 2">
+            </div>
+
+            <div class="small2">
+              <img src="https://scontent-sea1-1.cdninstagram.com/v/t51.82787-15/645714086_17961097209025342_7020824427645323298_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=NaqEQm4Y0scQ7kNvwGEjg88&_nc_oc=Adk4rnAfocyVrlXWVotE3X6YhXSiKCubXbJOL_WavWei8JpkToSlVoTcIG-SR_fAL1o&_nc_zt=23&_nc_ht=scontent-sea1-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=EhW_ZIGfWsC5LqPVMubMxw&_nc_tpa=Q5bMBQFaTCB8dqXggexHrAexB_x33sp4wVdhdqe_jit6174RCYqGkhGdehxrDRWOhZJGeKn2KNW4Csx_&oh=00_AfwhWDH4sk0tgRnSxH4MqCfizxmUaRxCNlf3zMcGXzycNw&oe=69B27142" alt="Instagram 3">
+            </div>
+
+            <div class="small3">
+              <img src="https://scontent-sea5-1.cdninstagram.com/v/t51.82787-15/641775807_17961090441025342_5055969460359063726_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=bFvJY2dtamMQ7kNvwGrmNrG&_nc_oc=AdkL8Ofi1ey_eHkr1KwAEuUuq7e85hyIsf5XymVDv0_NPZVMIsC-NmgDEl21mFYW-zk&_nc_zt=23&_nc_ht=scontent-sea5-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=EhW_ZIGfWsC5LqPVMubMxw&_nc_tpa=Q5bMBQE63EFwSnMqaxLJJKDaGYOhTOdW7hDFEeNb_D0Ax2xtfuDz608b_darJ1ODPXckLiiF2A1hQnQw&oh=00_AfwbihQxQQs_Nkb3YA7GWKIIDVual4WUn_ydafFamtzJWg&oe=69B26FDE" alt="Instagram 4">
+            </div>
+
+            <div class="small4">
+              <img src="https://scontent-sea5-1.cdninstagram.com/v/t51.82787-15/639760933_17960970123025342_4754939752228501711_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=lVfsLbr4xAUQ7kNvwGtWq0Z&_nc_oc=AdnHpgHEbFOBo-vRhCm0zhPZnNZMBqttie6C5JoC3ubiB_Db7RUcrDXReANG_XBJgx4&_nc_zt=23&_nc_ht=scontent-sea5-1.cdninstagram.com&edm=ANo9K5cEAAAA&_nc_gid=EhW_ZIGfWsC5LqPVMubMxw&_nc_tpa=Q5bMBQExvytBcGk__Km5PI2t6vvns2hKLcDG6mm7i5-nHoSPl9u05roVCLdDmdiCFS4zbcyEwI6tEYeb&oh=00_AfwZdsFx-SGitaLWlyIlwEjdHTBB5viPTg8dolLerJLdpg&oe=69B26969" alt="Instagram 5">
+            </div>
           </div>
-          <div>
-            <a href="#">Explore</a> •
-            <a href="#">About this account</a>
+
+          <div class="instagram-info">
+            <div class="instagram-title">Instagram</div>
+            <div class="instagram-handle"><i class="fa-brands fa-instagram"></i> fcbdelhincr · 20.2K seguidores</div>
+            <a href="https://www.instagram.com/fcbdelhincr/" target="_blank" rel="noopener noreferrer" class="instagram-btn">Seguir</a>
+            <div class="instagram-dots">⋮</div>
           </div>
+        </section>
+
+        <div class="footer-mini">
+          <a href="#">Preferencias de cookies</a> •
+          <a href="#">Informe</a> •
+          <a href="#">Privacidad</a> •
+          <a href="#">Explorar</a> •
+          <a href="#">Acerca de esta cuenta</a>
         </div>
 
       </section>
@@ -1433,24 +1542,11 @@
             </div>
           </a>
         </section>
-
-        <div class="footer-links">
-          <div>
-            <a href="#">Cookie Preferences</a> •
-            <a href="#">Report</a> •
-            <a href="#">Privacy</a>
-          </div>
-          <div>
-            <a href="#">Explore</a> •
-            <a href="#">About this account</a>
-          </div>
-        </div>
       </section>
     </div>
 
   </main>
 
-  <!-- MODAL VIDEO -->
   <div class="video-modal" id="videoModal">
     <div class="video-box">
       <button class="close-video" id="closeVideo" aria-label="Cerrar video">×</button>
@@ -1458,7 +1554,6 @@
     </div>
   </div>
 
-  <!-- MODAL VISOR HISTORIA -->
   <div class="story-viewer-modal" id="storyViewerModal">
     <div class="story-viewer-box">
       <div class="story-viewer-header" id="storyViewerTitle">
@@ -1557,7 +1652,6 @@
       }
     });
 
-    /* ===== SLIDER HISTORIA ===== */
     const storySlider = document.getElementById('storySlider');
     const storyPrev = document.getElementById('storyPrev');
     const storyNext = document.getElementById('storyNext');
@@ -1603,7 +1697,6 @@
     window.addEventListener('load', updateStoryButtons);
     window.addEventListener('resize', updateStoryButtons);
 
-    /* ===== VISOR HISTORIA ===== */
     const storyViewerModal = document.getElementById('storyViewerModal');
     const closeStoryViewerBtn = document.getElementById('closeStoryViewer');
     const storyViewerTitle = document.getElementById('storyViewerTitle');
