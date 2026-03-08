@@ -240,10 +240,12 @@
     .featured-card{
       background:#004D98;
       padding:13px 13px 0;
-      margin-bottom:26px;
+      margin:0 auto 26px;
       border-radius:26px;
       overflow:hidden;
       box-shadow:0 14px 35px rgba(0,0,0,.16);
+      width:524px;
+      max-width:100%;
     }
 
     .featured-inner{
@@ -289,13 +291,14 @@
     }
 
     .mini-thumb{
-      width:52px;
-      height:52px;
+      width:42px;
+      height:42px;
       object-fit:cover;
+      object-position:center;
       flex-shrink:0;
       display:block;
       background:#fff;
-      border-radius:12px;
+      border-radius:50%;
     }
 
     .dots{
@@ -303,37 +306,55 @@
       color:rgba(255,255,255,.85);
       line-height:1;
       flex-shrink:0;
+      width:18px;
+      text-align:center;
     }
 
     .song-card{
       background:#004D98;
-      margin-bottom:14px;
-      border-radius:22px;
+      margin:0 auto 14px;
+      border-radius:999px;
       overflow:hidden;
       box-shadow:0 14px 35px rgba(0,0,0,.16);
+      width:524px;
+      max-width:100%;
     }
 
     .song-card .card-footer{
-      min-height:66px;
-      padding:0 16px;
+      height:64px;
+      padding:0 14px;
       background:#004D98;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
     }
 
     .song-card .footer-left{
-      justify-content:center;
+      display:flex;
+      align-items:center;
       gap:14px;
+      min-width:0;
+      flex:1;
+      justify-content:flex-start;
     }
 
     .song-card .footer-text{
-      text-align:center;
       flex:1;
-      white-space:normal;
-      overflow:visible;
-      text-overflow:unset;
+      text-align:center;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
       font-size:16px !important;
+      font-weight:700;
+      line-height:1.2;
     }
 
-    .section-title{
+    .section-title,
+    .story-heading,
+    .video-title,
+    .location-title,
+    .member-title{
       text-align:center;
       font-size:16px;
       font-weight:900;
@@ -354,7 +375,9 @@
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:14px;
-      margin-bottom:46px;
+      margin:0 auto 46px;
+      width:524px;
+      max-width:100%;
     }
 
     .grid-card{
@@ -389,14 +412,9 @@
     }
 
     .story-section{
-      margin:6px 0 36px;
-    }
-
-    .story-heading{
-      text-align:center;
-      font-size:16px;
-      font-weight:900;
-      margin-bottom:16px;
+      margin:6px auto 36px;
+      width:524px;
+      max-width:100%;
     }
 
     .story-slider-wrap{
@@ -498,24 +516,14 @@
       right:10px;
     }
 
-    .video-title,
-    .location-title,
-    .member-title{
-      text-align:center;
-      font-size:16px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:-0.01em;
-      margin-bottom:18px;
-    }
-
     .video-banner{
       position:relative;
-      width:100%;
+      width:524px;
+      max-width:100%;
       min-height:295px;
       border-radius:20px;
       overflow:hidden;
-      margin:0 0 36px;
+      margin:0 auto 36px;
       cursor:pointer;
       background:#111;
       border:none;
@@ -608,11 +616,12 @@
 
     .location-wrap{
       position:relative;
-      width:100%;
+      width:524px;
+      max-width:100%;
       aspect-ratio:16/9;
       border-radius:22px;
       overflow:hidden;
-      margin:0 0 36px;
+      margin:0 auto 36px;
       background:#dce8d6;
       border:none;
       box-shadow:0 6px 18px rgba(0,0,0,.18);
@@ -667,63 +676,80 @@
 
     .member-card{
       background:#004D98;
-      margin-bottom:14px;
-      border-radius:22px;
+      margin:0 auto 14px;
+      border-radius:999px;
       overflow:hidden;
       box-shadow:0 14px 35px rgba(0,0,0,.16);
+      width:524px;
+      max-width:100%;
     }
 
     .member-card .card-footer{
-      min-height:68px;
-      padding:0 16px;
+      height:64px;
+      padding:0 14px;
       background:#004D98;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
     }
 
     .member-card .footer-left{
-      justify-content:center;
-      gap:16px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+      flex:1;
+      justify-content:flex-start;
     }
 
     .member-card .footer-text{
-      text-align:center;
       flex:1;
-      white-space:normal;
-      overflow:visible;
-      text-overflow:unset;
+      text-align:center;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
       font-size:16px !important;
+      font-weight:700;
+      line-height:1.2;
     }
 
     .fake-badge{
-      width:52px;
-      height:52px;
+      width:42px;
+      height:42px;
       flex-shrink:0;
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
       overflow:hidden;
-      border-radius:14px;
+      border-radius:50%;
       background:#fff;
       color:#0d4c95;
-      font-size:10px;
+      font-size:12px;
       font-weight:900;
     }
 
     .instagram-card{
-      background:#0057ae;
-      border-radius:30px;
+      background:#1d63ab;
+      border-radius:34px;
       overflow:hidden;
       box-shadow:0 14px 35px rgba(0,0,0,.16);
-      margin-top:10px;
+      margin:10px auto 0;
+      width:524px;
+      max-width:100%;
+      padding:14px 14px 16px;
     }
 
     .instagram-grid{
       display:grid;
       grid-template-columns:1.2fr 1fr 1fr;
-      grid-template-rows:140px 140px;
+      grid-template-rows:138px 138px;
       gap:2px;
-      background:#0057ae;
-      padding:12px 12px 0;
+      background:#1d63ab;
+      padding:0;
+      border-radius:26px;
+      overflow:hidden;
     }
 
     .instagram-grid img{
@@ -735,7 +761,7 @@
 
     .instagram-grid .big{
       grid-row:1 / span 2;
-      border-radius:22px 0 0 0;
+      border-radius:22px 0 0 22px;
       overflow:hidden;
     }
 
@@ -759,37 +785,39 @@
 
     .instagram-info{
       text-align:center;
-      padding:14px 18px 14px;
+      padding:12px 16px 0;
       position:relative;
     }
 
     .instagram-title{
-      font-size:18px;
+      font-size:16px;
       font-weight:700;
       color:#fff;
       margin-bottom:2px;
+      line-height:1.1;
     }
 
     .instagram-handle{
-      font-size:14px;
+      font-size:13px;
       color:rgba(255,255,255,.78);
-      margin-bottom:12px;
+      margin-bottom:10px;
+      line-height:1.2;
     }
 
     .instagram-btn{
       display:inline-block;
-      background:#2a79dc;
+      background:#4b8ee8;
       color:#fff;
       text-decoration:none;
       border-radius:999px;
-      padding:8px 18px;
-      font-size:14px;
+      padding:7px 16px;
+      font-size:13px;
       font-weight:700;
     }
 
     .instagram-dots{
       position:absolute;
-      right:18px;
+      right:10px;
       top:50%;
       transform:translateY(-50%);
       font-size:20px;
@@ -799,7 +827,7 @@
     .footer-mini{
       text-align:center;
       color:rgba(255,255,255,.90);
-      font-size:14px;
+      font-size:12px;
       line-height:1.8;
       font-weight:700;
       padding:60px 6px 0;
@@ -1043,7 +1071,7 @@
       }
 
       .content{
-        padding:0 14px 0;
+        padding:0 8px 0;
       }
 
       .grid{
@@ -1090,35 +1118,65 @@
         font-size:16px;
       }
 
+      .featured-card,
+      .song-card,
+      .member-card,
+      .instagram-card,
+      .grid,
+      .story-section,
+      .video-banner,
+      .location-wrap{
+        width:100%;
+        max-width:100%;
+      }
+
+      .song-card .card-footer,
+      .member-card .card-footer{
+        height:60px;
+        padding:0 12px;
+      }
+
       .mini-thumb{
-        width:44px;
-        height:44px;
+        width:38px;
+        height:38px;
+      }
+
+      .song-card .footer-text,
+      .member-card .footer-text{
+        font-size:15px !important;
       }
 
       .fake-badge{
-        width:44px;
-        height:44px;
+        width:38px;
+        height:38px;
+        font-size:11px;
       }
 
       .location-wrap{
         border-radius:18px;
       }
 
+      .instagram-card{
+        border-radius:28px;
+        padding:12px 12px 14px;
+      }
+
       .instagram-grid{
         grid-template-columns:1.15fr 1fr 1fr;
         grid-template-rows:120px 120px;
+        border-radius:22px;
       }
 
       .instagram-title{
-        font-size:16px;
+        font-size:15px;
       }
 
       .instagram-handle{
-        font-size:13px;
+        font-size:12px;
       }
 
       .footer-mini{
-        font-size:13px;
+        font-size:11px;
         line-height:1.9;
         padding-top:26px;
       }
@@ -1375,7 +1433,7 @@
                 >
                 <div class="story-body">
                   <div class="story-title">Destacado en The New Indian Express</div>
-                  <div class="story-sub"></div>
+                  <div class="story-sub">Documento</div>
                   <div class="story-menu">⋮</div>
                 </div>
               </button>
@@ -1392,7 +1450,7 @@
                 >
                 <div class="story-body">
                   <div class="story-title">Trabajando por una causa #MásQueUnPenya</div>
-                  <div class="story-sub"></div>
+                  <div class="story-sub">Documento</div>
                   <div class="story-menu">⋮</div>
                 </div>
               </button>
@@ -1506,18 +1564,18 @@
 
           <div class="instagram-info">
             <div class="instagram-title">Instagram</div>
-            <div class="instagram-handle"><i class="fa-brands fa-instagram"></i> fcbdelhincr · 20.2K seguidores</div>
-            <a href="https://www.instagram.com/fcbdelhincr/" target="_blank" rel="noopener noreferrer" class="instagram-btn">Seguir</a>
+            <div class="instagram-handle"><i class="fa-brands fa-instagram"></i> fcbdelhincr · 20.2K followers</div>
+            <a href="https://www.instagram.com/fcbdelhincr/" target="_blank" rel="noopener noreferrer" class="instagram-btn">Follow</a>
             <div class="instagram-dots">⋮</div>
           </div>
         </section>
 
         <div class="footer-mini">
-          <a href="#">Preferencias de cookies</a> •
-          <a href="#">Informe</a> •
-          <a href="#">Privacidad</a> •
-          <a href="#">Explorar</a> •
-          <a href="#">Acerca de esta cuenta</a>
+          <a href="#">Cookie Preferences</a> •
+          <a href="#">Report</a> •
+          <a href="#">Privacy</a> •
+          <a href="#">Explore</a> •
+          <a href="#">About this account</a>
         </div>
 
       </section>
