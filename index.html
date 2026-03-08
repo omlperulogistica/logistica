@@ -1014,6 +1014,126 @@
       font-size:18px;
     }
 
+    .subscribe-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.58);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      z-index:12000;
+    }
+
+    .subscribe-modal.active{
+      display:flex;
+    }
+
+    .subscribe-main-card{
+      position:relative;
+      width:520px;
+      max-width:calc(100vw - 48px);
+      min-height:455px;
+      background:#fff;
+      color:#111;
+      border-radius:22px;
+      padding:56px 24px 24px;
+      box-shadow:0 18px 40px rgba(0,0,0,.24);
+      text-align:center;
+    }
+
+    .subscribe-close{
+      position:absolute;
+      top:18px;
+      right:24px;
+      width:24px;
+      height:24px;
+      border:none;
+      background:transparent;
+      color:#111;
+      font-size:30px;
+      line-height:1;
+      cursor:pointer;
+      font-family:Arial, sans-serif;
+      font-weight:400;
+    }
+
+    .subscribe-avatar{
+      width:72px;
+      height:72px;
+      border-radius:50%;
+      object-fit:cover;
+      display:block;
+      margin:0 auto 18px;
+    }
+
+    .subscribe-title{
+      font-size:16px;
+      font-weight:900;
+      line-height:1.2;
+      color:#000;
+      margin-bottom:8px;
+      text-align:center;
+    }
+
+    .subscribe-text{
+      font-size:16px;
+      line-height:1.5;
+      color:#676B5F;
+      margin-bottom:24px;
+      text-align:center;
+    }
+
+    .subscribe-input{
+      width:100%;
+      max-width:472px;
+      height:48px;
+      border:none;
+      border-radius:4px;
+      background:#F6F7F5;
+      padding:0 12px;
+      font-size:14px;
+      font-family:"Lato", sans-serif;
+      margin:0 auto 18px;
+      outline:none;
+      color:#111;
+      display:block;
+    }
+
+    .subscribe-input::placeholder{
+      color:#8d8d8d;
+    }
+
+    .subscribe-submit{
+      width:100%;
+      max-width:472px;
+      height:48px;
+      border:none;
+      border-radius:999px;
+      background:#000;
+      color:#fff;
+      font-size:14px;
+      font-weight:900;
+      cursor:pointer;
+      font-family:"Lato", sans-serif;
+      margin:0 auto 20px;
+      display:block;
+    }
+
+    .subscribe-legal{
+      max-width:470px;
+      margin:0 auto;
+      font-size:14px;
+      line-height:1.5;
+      color:#676B5F;
+      text-align:center;
+    }
+
+    .subscribe-legal a{
+      color:#676B5F;
+      text-decoration:underline;
+    }
+
     @media (max-width:640px){
       body{
         padding:0;
@@ -1209,6 +1329,35 @@
         padding:12px 26px;
         font-size:15px;
       }
+
+      .subscribe-modal{
+        align-items:flex-end;
+        padding:0;
+      }
+
+      .subscribe-main-card{
+        width:100%;
+        max-width:100%;
+        min-height:auto;
+        border-radius:18px 18px 0 0;
+        padding:56px 24px 24px;
+      }
+
+      .subscribe-close{
+        right:24px;
+      }
+
+      .subscribe-title{
+        font-size:16px;
+      }
+
+      .subscribe-text{
+        font-size:16px;
+      }
+
+      .subscribe-legal{
+        font-size:14px;
+      }
     }
   </style>
 </head>
@@ -1228,7 +1377,7 @@
         </button>
 
         <div class="topbar-right">
-          <button class="circle-btn" aria-label="Notificaciones">
+          <button class="circle-btn" id="openSubscribeModal" aria-label="Notificaciones">
             <i class="fa-regular fa-bell"></i>
           </button>
           <button class="circle-btn" aria-label="Compartir">
@@ -1648,6 +1797,39 @@
     </div>
   </div>
 
+  <div class="subscribe-modal" id="subscribeModal">
+    <div class="subscribe-main-card">
+      <button class="subscribe-close" id="closeSubscribeModal" aria-label="Cerrar">×</button>
+
+      <img
+        class="subscribe-avatar"
+        src="https://omleurope.com/wp-content/uploads/2025/08/IMG_3272-scaled.jpeg"
+        alt="fcbdelhincr"
+      >
+
+      <div class="subscribe-title">Subscribe to fcbdelhincr</div>
+      <div class="subscribe-text">Stay up to date with everything important.</div>
+
+      <form id="subscribeForm">
+        <input
+          class="subscribe-input"
+          type="email"
+          placeholder="Email"
+          required
+        >
+        <button class="subscribe-submit" type="submit">Submit</button>
+      </form>
+
+      <div class="subscribe-legal">
+        By subscribing, you agree to Linktree's
+        <a href="#">T&amp;Cs</a>
+        and
+        <a href="#">Privacy Notice</a>,
+        and to your contact details being shared with fcbdelhincr, who may contact you.
+      </div>
+    </div>
+  </div>
+
   <script>
     document.querySelectorAll('a[href="#"]').forEach(link => {
       link.addEventListener('click', function(e){
@@ -1691,7 +1873,9 @@
     function closeVideo() {
       videoModal.classList.remove('active');
       videoFrameWrap.innerHTML = '';
-      document.body.style.overflow = '';
+      if (!storyViewerModal.classList.contains('active') && !subscribeModal.classList.contains('active')) {
+        document.body.style.overflow = '';
+      }
     }
 
     openVideoBtn.addEventListener('click', openVideo);
@@ -1700,13 +1884,6 @@
     videoModal.addEventListener('click', function(e){
       if(e.target === videoModal){
         closeVideo();
-      }
-    });
-
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape'){
-        closeVideo();
-        closeStoryViewer();
       }
     });
 
@@ -1771,7 +1948,7 @@
 
     function closeStoryViewer() {
       storyViewerModal.classList.remove('active');
-      if (!videoModal.classList.contains('active')) {
+      if (!videoModal.classList.contains('active') && !subscribeModal.classList.contains('active')) {
         document.body.style.overflow = '';
       }
     }
@@ -1790,6 +1967,46 @@
     storyViewerModal.addEventListener('click', function(e){
       if (e.target === storyViewerModal) {
         closeStoryViewer();
+      }
+    });
+
+    const openSubscribeModalBtn = document.getElementById('openSubscribeModal');
+    const closeSubscribeModalBtn = document.getElementById('closeSubscribeModal');
+    const subscribeModal = document.getElementById('subscribeModal');
+    const subscribeForm = document.getElementById('subscribeForm');
+
+    function openSubscribeModal() {
+      subscribeModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSubscribeModal() {
+      subscribeModal.classList.remove('active');
+      if (!videoModal.classList.contains('active') && !storyViewerModal.classList.contains('active')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    openSubscribeModalBtn.addEventListener('click', openSubscribeModal);
+    closeSubscribeModalBtn.addEventListener('click', closeSubscribeModal);
+
+    subscribeModal.addEventListener('click', function(e){
+      if(e.target === subscribeModal){
+        closeSubscribeModal();
+      }
+    });
+
+    subscribeForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Subscription submitted successfully');
+      closeSubscribeModal();
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        closeVideo();
+        closeStoryViewer();
+        closeSubscribeModal();
       }
     });
   </script>
