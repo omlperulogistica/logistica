@@ -1531,33 +1531,55 @@ body{
     padding-top:26px;
   }
 
+  .story-viewer-modal{
+    padding:0;
+    align-items:flex-end;
+  }
+
   .story-viewer-box{
-    width:min(96vw, 430px);
-    height:min(90vh, 760px);
-    border-radius:24px;
+    width:100%;
+    max-width:100%;
+    height:100dvh;
+    border-radius:24px 24px 0 0;
   }
 
   .story-viewer-header{
-    padding:20px 18px 8px;
+    padding:18px 16px 8px;
     font-size:15px;
   }
 
   .story-viewer-scroll{
-    padding:8px 14px 14px;
+    padding:8px 10px 10px;
   }
 
-  .story-viewer-doc-wrap{
-    min-height:470px;
-    height:470px;
+  .story-viewer-page{
+    min-height:calc(100dvh - 150px);
     padding:10px;
   }
 
+  .story-viewer-counter{
+    margin-bottom:10px;
+  }
+
+  .story-viewer-doc-wrap{
+    min-height:calc(100dvh - 245px);
+    height:calc(100dvh - 245px);
+    padding:6px;
+    border-radius:10px;
+  }
+
+  .story-viewer-frame{
+    width:100%;
+    height:100%;
+    border-radius:8px;
+  }
+
   .story-viewer-actions{
-    padding:12px 12px 14px;
+    padding:10px 10px 12px;
   }
 
   .story-viewer-btn-main{
-    padding:12px 26px;
+    padding:12px 24px;
     font-size:15px;
   }
 
