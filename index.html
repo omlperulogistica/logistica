@@ -32,7 +32,7 @@
             </svg>
           </button>
 
-          <button class="circle-btn" aria-label="Compartir">
+          <button class="circle-btn" id="sharePageBtn" aria-label="Compartir">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" viewBox="0 0 256 256" class="icon-svg share-icon" aria-hidden="true">
               <path d="M216,112v96a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V112A16,16,0,0,1,56,96H80a8,8,0,0,1,0,16H56v96H200V112H176a8,8,0,0,1,0-16h24A16,16,0,0,1,216,112ZM93.66,69.66,120,43.31V136a8,8,0,0,0,16,0V43.31l26.34,26.35a8,8,0,0,0,11.32-11.32l-40-40a8,8,0,0,0-11.32,0l-40,40A8,8,0,0,0,93.66,69.66Z"></path>
             </svg>
@@ -211,15 +211,16 @@
                 class="story-card openStoryViewer"
                 type="button"
                 data-title="Un sueño hecho realidad: el inspirador viaje del FCB Delhi NCR"
-                data-image="https://www.freshplaza.es/remote/https/agfstorage.blob.core.windows.net/misc/AGF_nl/2025/12/08/greenfruit3.jpg?preset=ContentCustom"
+                data-pdf="pdf/greenfruit.pdf"
+                data-pages="2"
               >
                 <img
                   src="https://www.freshplaza.es/remote/https/agfstorage.blob.core.windows.net/misc/AGF_nl/2025/12/08/greenfruit3.jpg?preset=ContentCustom"
-                  alt="Nuestra historia"
+                  alt="Un sueño hecho realidad: el inspirador viaje del FCB Delhi NCR"
                 >
                 <div class="story-body">
                   <div class="story-title">Un sueño hecho realidad: el inspirador viaje del FC...</div>
-                  <div class="story-sub">Documento</div>
+                  <div class="story-sub">PDF</div>
                   <div class="story-menu">⋮</div>
                 </div>
               </button>
@@ -228,15 +229,16 @@
                 class="story-card openStoryViewer"
                 type="button"
                 data-title="Destacado en The New Indian Express"
-                data-image="https://www.critica.com.pa/sites/default/files/imagenes/2022/06/09/exportacion_contenedor_gengibre_eeuu.jpeg"
+                data-pdf="pdf/apoyo1.pdf"
+                data-pages="2"
               >
                 <img
                   src="https://www.freshplaza.es/remote/https/agfstorage.blob.core.windows.net/misc/AGF_nl/2025/12/08/greenfruit2.jpg"
-                  alt="Reconocimiento"
+                  alt="Destacado en The New Indian Express"
                 >
                 <div class="story-body">
                   <div class="story-title">Destacado en The New Indian Express</div>
-                  <div class="story-sub">Documento</div>
+                  <div class="story-sub">PDF</div>
                   <div class="story-menu">⋮</div>
                 </div>
               </button>
@@ -245,15 +247,16 @@
                 class="story-card openStoryViewer"
                 type="button"
                 data-title="Trabajando por una causa #MásQueUnPenya"
-                data-image="https://www.critica.com.pa/sites/default/files/imagenes/2022/06/09/exportacion_contenedor_gengibre_eeuu.jpeg"
+                data-pdf="pdf/apoyo2.pdf"
+                data-pages="2"
               >
                 <img
                   src="https://www.freshplaza.es/remote/https/agfstorage.blob.core.windows.net/misc/AGF_nl/2025/12/08/greenfruit3.jpg?preset=ContentCustom"
-                  alt="Propósito"
+                  alt="Trabajando por una causa #MásQueUnPenya"
                 >
                 <div class="story-body">
                   <div class="story-title">Trabajando por una causa #MásQueUnPenya</div>
-                  <div class="story-sub">Documento</div>
+                  <div class="story-sub">PDF</div>
                   <div class="story-menu">⋮</div>
                 </div>
               </button>
@@ -431,24 +434,31 @@
 
       <div class="story-viewer-scroll">
         <div class="story-viewer-page">
-          <div class="story-viewer-counter">1 of 3</div>
+          <div class="story-viewer-counter" id="storyViewerCounter">1 of 1</div>
 
-          <div class="story-viewer-image-wrap">
-            <img
-              id="storyViewerImage"
-              class="story-viewer-image"
-              src="https://www.critica.com.pa/sites/default/files/imagenes/2022/06/09/exportacion_contenedor_gengibre_eeuu.jpeg"
-              alt="Vista previa"
-            >
+          <div class="story-viewer-doc-wrap">
+            <iframe
+              id="storyViewerFrame"
+              class="story-viewer-frame"
+              src=""
+              title="Vista previa del PDF"
+              loading="lazy">
+            </iframe>
           </div>
         </div>
       </div>
 
       <div class="story-viewer-actions">
-        <button class="story-viewer-btn-main" type="button">Vista</button>
+        <a
+          class="story-viewer-btn-main"
+          id="storyViewerOpenPdf"
+          href="pdf/greenfruit.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >View</a>
 
         <div class="story-viewer-right">
-          <button class="story-viewer-icon-btn" type="button" aria-label="Compartir">
+          <button class="story-viewer-icon-btn" id="shareStoryPdf" type="button" aria-label="Compartir PDF">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </button>
           <button class="story-viewer-icon-btn" id="closeStoryViewer" type="button" aria-label="Cerrar">
