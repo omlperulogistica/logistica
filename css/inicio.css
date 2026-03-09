@@ -49,7 +49,26 @@ body{
   object-fit:cover;
   object-position:center 66%;
   display:block;
-  transform:scale(1.06);
+  animation: heroZoomBig 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroZoomBig{
+  0%{
+    transform: scale(1.18) translateX(0px) translateY(0px);
+  }
+  25%{
+    transform: scale(1.22) translateX(-8px) translateY(-4px);
+  }
+  50%{
+    transform: scale(1.26) translateX(6px) translateY(-8px);
+  }
+  75%{
+    transform: scale(1.29) translateX(-5px) translateY(-12px);
+  }
+  100%{
+    transform: scale(1.32) translateX(8px) translateY(-16px);
+  }
 }
 
 .hero::after{
