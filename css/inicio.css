@@ -14,7 +14,7 @@ html, body{
 
 body{
   font-family:"Lato", sans-serif;
-  background:#8f1a20;
+  background:#822025;
   color:#fff;
   display:flex;
   justify-content:center;
@@ -93,7 +93,7 @@ body{
   min-height:42px;
   border:none;
   border-radius:50%;
-  background:rgba(245,245,245,.96);
+  background:#f2dddd;
   color:#111;
   display:flex;
   align-items:center;
@@ -103,12 +103,12 @@ body{
   padding:0;
   appearance:none;
   -webkit-appearance:none;
-  box-shadow:0 2px 8px rgba(0,0,0,.14);
-  transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+  box-shadow:none;
+  transition:transform .2s ease, background .2s ease;
 }
 
 .circle-btn:hover{
-  background:#ffffff;
+  background:#f3e3e3;
 }
 
 .circle-btn:active{
@@ -129,7 +129,6 @@ body{
   height:19px;
 }
 
-/* ICONO IZQUIERDO QUIETO, SIN MOVIMIENTO */
 .rotating-icon{
   width:18px;
   height:18px;
@@ -857,16 +856,20 @@ body{
 
 .footer-mini{
   text-align:center;
-  color:rgba(255,255,255,.90);
-  font-size:12px;
+  color:rgba(255,255,255,.92);
+  font-size:11px;
   line-height:1.8;
   font-weight:700;
   padding:60px 6px 0;
 }
 
 .footer-mini a{
-  color:rgba(255,255,255,.90);
+  color:rgba(255,255,255,.92);
   text-decoration:none;
+}
+
+.footer-mini-shop{
+  padding:34px 6px 0;
 }
 
 .video-modal{
@@ -1516,6 +1519,10 @@ body{
   .footer-mini{
     font-size:11px;
     line-height:1.9;
+    padding-top:26px;
+  }
+
+  .footer-mini-shop{
     padding-top:26px;
   }
 
