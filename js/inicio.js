@@ -29,7 +29,9 @@ const closeVideoBtn = document.getElementById('closeVideo');
 const storyViewerModal = document.getElementById('storyViewerModal');
 const storyViewerTitle = document.getElementById('storyViewerTitle');
 const storyViewerCounter = document.getElementById('storyViewerCounter');
-const storyViewerFrame = document.getElementById('storyViewerFrame');
+const storyViewerDocWrap = document.getElementById('storyViewerDocWrap');
+const storyViewerLoading = document.getElementById('storyViewerLoading');
+const storyViewerPages = document.getElementById('storyViewerPages');
 const storyViewerOpenPdf = document.getElementById('storyViewerOpenPdf');
 const closeStoryViewerBtn = document.getElementById('closeStoryViewer');
 const shareStoryPdfBtn = document.getElementById('shareStoryPdf');
@@ -48,6 +50,15 @@ const sharePageBtn = document.getElementById('sharePageBtn');
 
 let currentStoryPdf = '';
 let currentStoryTitle = '';
+let currentPdfTotalPages = 1;
+let currentRenderToken = 0;
+let currentPageObserver = null;
+let resizeTimeout = null;
+
+if (window.pdfjsLib) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+}
 
 function isModalOpen(modal) {
   return !!modal && modal.classList.contains('active');
@@ -68,16 +79,9 @@ function buildAbsoluteUrl(path) {
   return new URL(path, window.location.href).href;
 }
 
-function getPdfPreviewUrl(pdfPath) {
-  return `${pdfPath}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`;
-}
-
 function shareUrl(url, title = document.title) {
   if (navigator.share) {
-    navigator.share({
-      title,
-      url
-    }).catch(() => {});
+    navigator.share({ title, url }).catch(() => {});
     return;
   }
 
@@ -161,28 +165,164 @@ storySlider?.addEventListener('scroll', updateStoryButtons);
 window.addEventListener('load', updateStoryButtons);
 window.addEventListener('resize', updateStoryButtons);
 
-function openStoryViewer(title, pdfPath, totalPages = '1') {
-  if (!storyViewerModal || !storyViewerTitle || !storyViewerCounter || !storyViewerFrame || !storyViewerOpenPdf) return;
+function setStoryLoading(isLoading, message = 'Cargando PDF...') {
+  if (!storyViewerDocWrap || !storyViewerLoading) return;
+
+  storyViewerLoading.textContent = message;
+
+  if (isLoading) {
+    storyViewerDocWrap.classList.add('is-loading');
+  } else {
+    storyViewerDocWrap.classList.remove('is-loading');
+  }
+}
+
+function updateStoryCounter(current, total) {
+  if (!storyViewerCounter) return;
+  storyViewerCounter.textContent = `${current} of ${total}`;
+}
+
+function clearStoryPages() {
+  if (storyViewerPages) {
+    storyViewerPages.innerHTML = '';
+  }
+
+  if (currentPageObserver) {
+    currentPageObserver.disconnect();
+    currentPageObserver = null;
+  }
+}
+
+function observeVisiblePages(totalPages) {
+  if (!storyViewerDocWrap || !storyViewerPages) return;
+
+  const pages = [...storyViewerPages.querySelectorAll('.story-viewer-pdf-page')];
+  if (!pages.length) return;
+
+  if (currentPageObserver) {
+    currentPageObserver.disconnect();
+  }
+
+  currentPageObserver = new IntersectionObserver(
+    entries => {
+      const visibleEntry = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (!visibleEntry) return;
+
+      const pageNumber = Number(visibleEntry.target.dataset.page || 1);
+      updateStoryCounter(pageNumber, totalPages);
+    },
+    {
+      root: storyViewerDocWrap,
+      threshold: [0.5, 0.7, 0.9]
+    }
+  );
+
+  pages.forEach(page => currentPageObserver.observe(page));
+}
+
+async function renderPdfWithPdfJs(pdfPath) {
+  if (!window.pdfjsLib || !storyViewerPages || !storyViewerDocWrap) {
+    setStoryLoading(true, 'No se pudo mostrar el PDF aquí. Usa View para abrirlo.');
+    return;
+  }
+
+  const renderToken = ++currentRenderToken;
+
+  clearStoryPages();
+  setStoryLoading(true, 'Cargando PDF...');
+  updateStoryCounter(1, 1);
+
+  try {
+    const loadingTask = pdfjsLib.getDocument(pdfPath);
+    const pdf = await loadingTask.promise;
+
+    if (renderToken !== currentRenderToken) return;
+
+    currentPdfTotalPages = pdf.numPages || 1;
+    updateStoryCounter(1, currentPdfTotalPages);
+
+    const wrapStyle = getComputedStyle(storyViewerDocWrap);
+    const horizontalPadding =
+      parseFloat(wrapStyle.paddingLeft) + parseFloat(wrapStyle.paddingRight);
+
+    const availableWidth = Math.max(280, storyViewerDocWrap.clientWidth - horizontalPadding);
+
+    for (let pageNumber = 1; pageNumber <= currentPdfTotalPages; pageNumber++) {
+      const page = await pdf.getPage(pageNumber);
+      if (renderToken !== currentRenderToken) return;
+
+      const unscaledViewport = page.getViewport({ scale: 1 });
+      const scale = availableWidth / unscaledViewport.width;
+      const viewport = page.getViewport({ scale });
+
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const renderViewport = page.getViewport({ scale: scale * dpr });
+
+      const pageBox = document.createElement('div');
+      pageBox.className = 'story-viewer-pdf-page';
+      pageBox.dataset.page = pageNumber;
+
+      const canvas = document.createElement('canvas');
+      canvas.className = 'story-viewer-canvas';
+
+      const context = canvas.getContext('2d', { alpha: false });
+
+      canvas.width = Math.floor(renderViewport.width);
+      canvas.height = Math.floor(renderViewport.height);
+      canvas.style.width = `${viewport.width}px`;
+      canvas.style.height = `${viewport.height}px`;
+
+      pageBox.appendChild(canvas);
+      storyViewerPages.appendChild(pageBox);
+
+      await page.render({
+        canvasContext: context,
+        viewport: renderViewport
+      }).promise;
+    }
+
+    if (renderToken !== currentRenderToken) return;
+
+    setStoryLoading(false);
+    storyViewerDocWrap.scrollTop = 0;
+    observeVisiblePages(currentPdfTotalPages);
+  } catch (error) {
+    if (renderToken !== currentRenderToken) return;
+    setStoryLoading(true, 'No se pudo mostrar el PDF aquí. Usa View para abrirlo.');
+  }
+}
+
+function openStoryViewer(title, pdfPath) {
+  if (!storyViewerModal || !storyViewerTitle || !storyViewerOpenPdf) return;
 
   currentStoryTitle = title;
   currentStoryPdf = pdfPath;
+  currentPdfTotalPages = 1;
 
   storyViewerTitle.textContent = title;
-  storyViewerCounter.textContent = `1 of ${totalPages}`;
-  storyViewerFrame.src = getPdfPreviewUrl(pdfPath);
   storyViewerOpenPdf.href = pdfPath;
   storyViewerOpenPdf.setAttribute('aria-label', `Abrir ${title}`);
 
   storyViewerModal.classList.add('active');
   document.body.style.overflow = 'hidden';
+
+  renderPdfWithPdfJs(pdfPath);
 }
 
 function closeStoryViewer() {
-  if (!storyViewerModal || !storyViewerFrame) return;
-  storyViewerModal.classList.remove('active');
-  storyViewerFrame.src = '';
+  if (!storyViewerModal) return;
+
+  currentRenderToken++;
   currentStoryPdf = '';
   currentStoryTitle = '';
+  currentPdfTotalPages = 1;
+
+  storyViewerModal.classList.remove('active');
+  clearStoryPages();
+  setStoryLoading(true, 'Cargando PDF...');
   resetBodyScroll();
 }
 
@@ -190,8 +330,7 @@ storyCards.forEach(card => {
   card.addEventListener('click', () => {
     openStoryViewer(
       card.getAttribute('data-title') || 'Documento',
-      card.getAttribute('data-pdf') || '',
-      card.getAttribute('data-pages') || '1'
+      card.getAttribute('data-pdf') || ''
     );
   });
 });
@@ -259,6 +398,15 @@ promoModal?.addEventListener('click', function (e) {
 
 sharePageBtn?.addEventListener('click', () => {
   shareUrl(window.location.href, document.title);
+});
+
+window.addEventListener('resize', () => {
+  if (!isModalOpen(storyViewerModal) || !currentStoryPdf) return;
+
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    renderPdfWithPdfJs(currentStoryPdf);
+  }, 180);
 });
 
 document.addEventListener('keydown', function (e) {
