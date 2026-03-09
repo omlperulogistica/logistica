@@ -1134,6 +1134,165 @@
       text-decoration:underline;
     }
 
+    .promo-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.58);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      z-index:12100;
+    }
+
+    .promo-modal.active{
+      display:flex;
+    }
+
+    .promo-card{
+      position:relative;
+      width:514px;
+      max-width:calc(100vw - 48px);
+      min-height:638px;
+      background:#d2ea1c;
+      color:#254F1A;
+      border-radius:28px;
+      padding:30px 28px 28px;
+      box-shadow:0 24px 50px rgba(0,0,0,.28);
+      overflow:hidden;
+    }
+
+    .promo-close{
+      position:absolute;
+      top:16px;
+      right:22px;
+      width:28px;
+      height:28px;
+      border:none;
+      background:transparent;
+      color:#254F1A;
+      font-size:30px;
+      line-height:1;
+      cursor:pointer;
+      z-index:3;
+    }
+
+    .promo-star{
+      font-size:30px;
+      line-height:1;
+      color:#254F1A;
+      margin-bottom:18px;
+      font-weight:900;
+    }
+
+    .promo-title{
+      font-size:40px;
+      line-height:1;
+      font-weight:900;
+      color:#254F1A;
+      letter-spacing:-0.04em;
+      max-width:456px;
+      margin-bottom:12px;
+    }
+
+    .promo-title .blue{
+      color:#2f55ff;
+    }
+
+    .promo-text{
+      font-size:16px;
+      line-height:1.5;
+      color:#254F1A;
+      max-width:456px;
+      margin-bottom:24px;
+    }
+
+    .promo-input{
+      width:240px;
+      height:55px;
+      border:none;
+      border-radius:8px;
+      background:#F3F3F1;
+      padding:0 14px;
+      font-size:14px;
+      color:#111;
+      outline:none;
+      font-family:"Lato", sans-serif;
+      margin-bottom:10px;
+      display:block;
+    }
+
+    .promo-input::placeholder{
+      color:#8c95a6;
+    }
+
+    .promo-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:192px;
+      height:64px;
+      border:none;
+      border-radius:999px;
+      background:#254F1A;
+      color:#D2EA1C;
+      font-size:14px;
+      font-weight:900;
+      cursor:pointer;
+      font-family:"Lato", sans-serif;
+      margin-bottom:28px;
+      padding:0 16px;
+    }
+
+    .promo-links{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      margin-bottom:14px;
+      position:relative;
+      z-index:2;
+    }
+
+    .promo-links a{
+      color:#254F1A;
+      text-decoration:underline;
+      font-size:12px;
+      line-height:1.2;
+      width:max-content;
+      max-width:228px;
+    }
+
+    .promo-outline{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:112px;
+      height:48px;
+      border:1.5px solid #254F1A;
+      border-radius:999px;
+      background:transparent;
+      color:#254F1A;
+      font-size:14px;
+      font-weight:700;
+      text-decoration:none;
+      position:relative;
+      z-index:2;
+    }
+
+    .promo-phone{
+      position:absolute;
+      right:18px;
+      bottom:38px;
+      width:228px;
+      max-width:228px;
+      min-width:150px;
+      height:auto;
+      transform:rotate(-14deg);
+      transform-origin:center;
+      z-index:1;
+      pointer-events:none;
+    }
+
     @media (max-width:640px){
       body{
         padding:0;
@@ -1358,6 +1517,78 @@
       .subscribe-legal{
         font-size:14px;
       }
+
+      .promo-modal{
+        align-items:flex-end;
+        padding:0;
+      }
+
+      .promo-card{
+        width:100%;
+        max-width:100%;
+        min-height:575px;
+        border-radius:24px 24px 0 0;
+        padding:30px 18px 42px;
+      }
+
+      .promo-close{
+        top:14px;
+        right:18px;
+        font-size:30px;
+      }
+
+      .promo-star{
+        font-size:30px;
+        margin-bottom:18px;
+      }
+
+      .promo-title{
+        font-size:34px;
+        line-height:1;
+        max-width:330px;
+        margin-bottom:14px;
+      }
+
+      .promo-text{
+        font-size:18px;
+        line-height:1.45;
+        max-width:330px;
+        margin-bottom:22px;
+      }
+
+      .promo-input{
+        width:224px;
+        height:52px;
+        margin-bottom:12px;
+      }
+
+      .promo-cta{
+        width:148px;
+        height:60px;
+        font-size:15px;
+        margin-bottom:24px;
+      }
+
+      .promo-links{
+        margin-bottom:16px;
+      }
+
+      .promo-links a{
+        font-size:14px;
+        max-width:220px;
+      }
+
+      .promo-outline{
+        width:112px;
+        height:46px;
+        font-size:14px;
+      }
+
+      .promo-phone{
+        width:124px;
+        right:18px;
+        bottom:34px;
+      }
     }
   </style>
 </head>
@@ -1372,7 +1603,7 @@
       >
 
       <div class="topbar">
-        <button class="circle-btn" aria-label="Decoración">
+        <button class="circle-btn" id="openPromoModal" aria-label="Promoción">
           <i class="fa-solid fa-sun"></i>
         </button>
 
@@ -1830,6 +2061,43 @@
     </div>
   </div>
 
+  <div class="promo-modal" id="promoModal">
+    <div class="promo-card">
+      <button class="promo-close" id="closePromoModal" aria-label="Cerrar">×</button>
+
+      <div class="promo-star">✱</div>
+
+      <div class="promo-title">
+        Join the only link in bio trusted by 70M+ <span class="blue">creatives.</span>
+      </div>
+
+      <div class="promo-text">
+        One link to share everything you create, curate and sell across IG, TikTok and more.
+      </div>
+
+      <input
+        class="promo-input"
+        type="text"
+        placeholder="linktr.ee/ yourname"
+      >
+
+      <button class="promo-cta" type="button">Claim your Linktree</button>
+
+      <div class="promo-links">
+        <a href="#">Subscribe to @fcbdelhincr</a>
+        <a href="#">Learn more about Linktree</a>
+      </div>
+
+      <a href="#" class="promo-outline">Sign up free</a>
+
+      <img
+        class="promo-phone"
+        src="https://assets.production.linktr.ee/profiles/_next/static/media/natazia.b1cbbe2a583db9d7.webp"
+        alt="Vista promo Linktree"
+      >
+    </div>
+  </div>
+
   <script>
     document.querySelectorAll('a[href="#"]').forEach(link => {
       link.addEventListener('click', function(e){
@@ -1873,7 +2141,11 @@
     function closeVideo() {
       videoModal.classList.remove('active');
       videoFrameWrap.innerHTML = '';
-      if (!storyViewerModal.classList.contains('active') && !subscribeModal.classList.contains('active')) {
+      if (
+        !storyViewerModal.classList.contains('active') &&
+        !subscribeModal.classList.contains('active') &&
+        !promoModal.classList.contains('active')
+      ) {
         document.body.style.overflow = '';
       }
     }
@@ -1948,7 +2220,11 @@
 
     function closeStoryViewer() {
       storyViewerModal.classList.remove('active');
-      if (!videoModal.classList.contains('active') && !subscribeModal.classList.contains('active')) {
+      if (
+        !videoModal.classList.contains('active') &&
+        !subscribeModal.classList.contains('active') &&
+        !promoModal.classList.contains('active')
+      ) {
         document.body.style.overflow = '';
       }
     }
@@ -1982,7 +2258,11 @@
 
     function closeSubscribeModal() {
       subscribeModal.classList.remove('active');
-      if (!videoModal.classList.contains('active') && !storyViewerModal.classList.contains('active')) {
+      if (
+        !videoModal.classList.contains('active') &&
+        !storyViewerModal.classList.contains('active') &&
+        !promoModal.classList.contains('active')
+      ) {
         document.body.style.overflow = '';
       }
     }
@@ -2002,11 +2282,41 @@
       closeSubscribeModal();
     });
 
+    const openPromoModalBtn = document.getElementById('openPromoModal');
+    const closePromoModalBtn = document.getElementById('closePromoModal');
+    const promoModal = document.getElementById('promoModal');
+
+    function openPromoModal() {
+      promoModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePromoModal() {
+      promoModal.classList.remove('active');
+      if (
+        !videoModal.classList.contains('active') &&
+        !storyViewerModal.classList.contains('active') &&
+        !subscribeModal.classList.contains('active')
+      ) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    openPromoModalBtn.addEventListener('click', openPromoModal);
+    closePromoModalBtn.addEventListener('click', closePromoModal);
+
+    promoModal.addEventListener('click', function(e){
+      if(e.target === promoModal){
+        closePromoModal();
+      }
+    });
+
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape'){
         closeVideo();
         closeStoryViewer();
         closeSubscribeModal();
+        closePromoModal();
       }
     });
   </script>
