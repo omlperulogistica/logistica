@@ -47,7 +47,7 @@ body{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center 66%;
+  object-position:center center;
   display:block;
   animation: heroZoomBig 20s ease-in-out infinite alternate;
   will-change: transform;
@@ -55,19 +55,19 @@ body{
 
 @keyframes heroZoomBig{
   0%{
-    transform: scale(1.18) translateX(0px) translateY(0px);
+    transform: scale(1.03) translateX(0px) translateY(0px);
   }
   25%{
-    transform: scale(1.22) translateX(-8px) translateY(-4px);
+    transform: scale(1.05) translateX(-3px) translateY(-2px);
   }
   50%{
-    transform: scale(1.26) translateX(6px) translateY(-8px);
+    transform: scale(1.06) translateX(2px) translateY(-3px);
   }
   75%{
-    transform: scale(1.29) translateX(-5px) translateY(-12px);
+    transform: scale(1.07) translateX(-2px) translateY(-4px);
   }
   100%{
-    transform: scale(1.32) translateX(8px) translateY(-16px);
+    transform: scale(1.08) translateX(3px) translateY(-5px);
   }
 }
 
@@ -1509,8 +1509,8 @@ body{
   }
 
   .hero img{
-    object-position:center 68%;
-    transform:scale(1.05);
+    object-position:center center;
+    transform:scale(1.01);
   }
 
   .topbar{
