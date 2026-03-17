@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OML PERÚ</title>
 
+  <script>
+    (function () {
+      const remembered = localStorage.getItem("oml_remember") === "true";
+      const savedLocale = localStorage.getItem("oml_locale_code");
+      const tempLocale = sessionStorage.getItem("oml_temp_locale_code");
+
+      const hasLanguage =
+        (remembered && savedLocale) ||
+        (!remembered && tempLocale) ||
+        (!remembered && savedLocale);
+
+      if (!hasLanguage) {
+        window.location.replace("idioma.html");
+      }
+    })();
+  </script>
+
   <link rel="icon" type="image/png" href="https://omleurope.com/wp-content/uploads/2025/08/cropped-cropped-LOGO_OFICIALMETE_OMLEUROPE-Pica-removebg-preview-2.png" />
   <link rel="stylesheet" href="css/inicio.css" />
 </head>
