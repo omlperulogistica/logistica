@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OML PERU - Selector de idioma</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html,body{
+      width:100%;
+      height:100%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      min-height:100dvh;
+      overflow:hidden;
+      position:relative;
+      color:#fff;
+      background:#000;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:url("https://www.freshplaza.es/remote/https/agfstorage.blob.core.windows.net/misc/AGF_nl/2025/12/08/greenfruit2.jpg?preset=ContentFullSmall");
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
+      filter:brightness(.38) contrast(1.08) saturate(1.04);
+      transform:scale(1.02);
+      z-index:0;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.34));
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .page{
+      position:relative;
+      width:100%;
+      height:100vh;
+      height:100dvh;
+      z-index:2;
+    }
+
+    .logo{
+      position:absolute;
+      top:36px;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:48px;
+      font-weight:400;
+      color:#fff;
+      letter-spacing:1px;
+      text-shadow:0 2px 10px rgba(0,0,0,.30);
+      user-select:none;
+      z-index:4;
+      white-space:nowrap;
+    }
+
+    .panel{
+      position:absolute;
+      top:33%;
+      left:50%;
+      transform:translateX(-50%);
+      width:370px;
+      max-width:calc(100vw - 32px);
+      z-index:5;
+    }
+
+    .title{
+      text-align:center;
+      font-size:14px;
+      font-weight:700;
+      color:#fff;
+      margin-bottom:12px;
+      text-shadow:0 2px 10px rgba(0,0,0,.30);
+    }
+
+    .search-shell{
+      position:relative;
+      width:100%;
+      margin-bottom:14px;
+    }
+
+    .search-box{
+      width:100%;
+      min-height:74px;
+      background:#fff;
+      display:flex;
+      align-items:stretch;
+      box-shadow:0 4px 16px rgba(0,0,0,.12);
+    }
+
+    .search-input{
+      flex:1;
+      border:none;
+      outline:none;
+      background:#fff;
+      color:#111;
+      font-size:14px;
+      padding:24px 12px;
+    }
+
+    .search-input::placeholder{
+      color:#7b7b7b;
+    }
+
+    .search-action{
+      width:56px;
+      min-width:56px;
+      border:none;
+      border-left:1px solid #ececec;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:background .2s ease;
+    }
+
+    .search-action:hover{
+      background:#f5f5f5;
+    }
+
+    .search-action svg{
+      width:20px;
+      height:20px;
+      stroke:#666;
+      stroke-width:1.8;
+      fill:none;
+      transition:transform .2s ease;
+    }
+
+    .search-shell.open .search-action .chevron{
+      transform:rotate(180deg);
+    }
+
+    .dropdown{
+      position:absolute;
+      top:calc(100% + 6px);
+      left:0;
+      width:100%;
+      max-height:280px;
+      overflow:auto;
+      background:rgba(255,255,255,.99);
+      box-shadow:0 12px 28px rgba(0,0,0,.22);
+      border:1px solid rgba(0,0,0,.08);
+      display:none;
+      z-index:10;
+    }
+
+    .search-shell.open .dropdown{
+      display:block;
+    }
+
+    .dropdown-item{
+      width:100%;
+      border:none;
+      background:#fff;
+      color:#111;
+      text-align:left;
+      padding:14px 12px;
+      font-size:14px;
+      cursor:pointer;
+      border-bottom:1px solid #efefef;
+      transition:background .15s ease;
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item.active{
+      background:#f3f5f7;
+    }
+
+    .dropdown-empty{
+      padding:14px 12px;
+      font-size:14px;
+      color:#666;
+      background:#fff;
+    }
+
+    .helper{
+      margin:0 0 14px;
+      min-height:18px;
+      text-align:left;
+      font-size:12px;
+      color:#fff;
+      text-shadow:0 2px 10px rgba(0,0,0,.35);
+    }
+
+    .remember{
+      width:100%;
+      min-height:62px;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:20px 12px;
+      margin-bottom:16px;
+      box-shadow:0 4px 16px rgba(0,0,0,.12);
+    }
+
+    .remember label{
+      color:#111;
+      font-size:14px;
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .remember input[type="checkbox"]{
+      width:18px;
+      height:18px;
+      accent-color:#555;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .btn-wrap{
+      text-align:center;
+    }
+
+    .btn-go{
+      width:180px;
+      height:46px;
+      border:none;
+      background:#4a4a4a;
+      color:#fff;
+      font-size:15px;
+      font-weight:700;
+      cursor:pointer;
+      transition:background .2s ease, transform .12s ease;
+      box-shadow:0 4px 14px rgba(0,0,0,.18);
+    }
+
+    .btn-go:hover{
+      background:#383838;
+    }
+
+    .btn-go:active{
+      transform:scale(.98);
+    }
+
+    .status{
+      margin-top:12px;
+      min-height:18px;
+      text-align:center;
+      font-size:12px;
+      color:#fff;
+      text-shadow:0 2px 10px rgba(0,0,0,.35);
+    }
+
+    @media (max-width: 480px){
+      .logo{
+        top:42px;
+        font-size:40px;
+      }
+
+      .panel{
+        top:30%;
+        width:370px;
+        max-width:calc(100vw - 26px);
+      }
+
+      .search-box{
+        min-height:68px;
+      }
+
+      .search-input{
+        padding:21px 12px;
+      }
+
+      .remember{
+        min-height:58px;
+        padding:18px 12px;
+      }
+
+      .btn-go{
+        width:170px;
+        height:44px;
+        font-size:14px;
+      }
+    }
+
+    @media (max-width: 360px){
+      .logo{
+        font-size:34px;
+      }
+
+      .panel{
+        top:29%;
+        max-width:calc(100vw - 20px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="logo">OML PERU</div>
+
+    <div class="panel">
+      <div class="title">Seleccionar idioma</div>
+
+      <div class="search-shell" id="searchShell">
+        <div class="search-box">
+          <input
+            type="text"
+            class="search-input"
+            id="languageInput"
+            placeholder="Escribe país o idioma"
+            autocomplete="off"
+          />
+          <button class="search-action" id="toggleSearch" type="button" aria-label="Buscar idioma">
+            <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 9l6 6 6-6"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="dropdown" id="dropdown"></div>
+      </div>
+
+      <div class="helper" id="helperText"></div>
+
+      <div class="remember">
+        <label for="rememberChoice">Remember my selection</label>
+        <input type="checkbox" id="rememberChoice" />
+      </div>
+
+      <div class="btn-wrap">
+        <button class="btn-go" id="goBtn">Go</button>
+      </div>
+
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+
+  <script>
+    const locales = [
+      { code: "af-ZA", label: "South Africa (Afrikaans)", search: "south africa afrikaans sudafrica" },
+      { code: "am-ET", label: "Ethiopia (Amharic)", search: "ethiopia amharic amárico" },
+      { code: "ar-AE", label: "United Arab Emirates (Arabic)", search: "uae emirates arabic arabe" },
+      { code: "ar-BH", label: "Bahrain (Arabic)", search: "bahrain arabic arabe" },
+      { code: "ar-DZ", label: "Algeria (Arabic)", search: "algeria arabic arabe" },
+      { code: "ar-EG", label: "Egypt (Arabic)", search: "egypt arabic arabe egipto" },
+      { code: "ar-IQ", label: "Iraq (Arabic)", search: "iraq arabic arabe" },
+      { code: "ar-JO", label: "Jordan (Arabic)", search: "jordan arabic arabe" },
+      { code: "ar-KW", label: "Kuwait (Arabic)", search: "kuwait arabic arabe" },
+      { code: "ar-LB", label: "Lebanon (Arabic)", search: "lebanon arabic arabe" },
+      { code: "ar-LY", label: "Libya (Arabic)", search: "libya arabic arabe" },
+      { code: "ar-MA", label: "Morocco (Arabic)", search: "morocco arabic arabe marruecos" },
+      { code: "ar-OM", label: "Oman (Arabic)", search: "oman arabic arabe" },
+      { code: "ar-QA", label: "Qatar (Arabic)", search: "qatar arabic arabe" },
+      { code: "ar-SA", label: "Saudi Arabia (Arabic)", search: "saudi arabia arabic arabe" },
+      { code: "ar-SY", label: "Syria (Arabic)", search: "syria arabic arabe siria" },
+      { code: "ar-TN", label: "Tunisia (Arabic)", search: "tunisia arabic arabe" },
+      { code: "ar-YE", label: "Yemen (Arabic)", search: "yemen arabic arabe" },
+
+      { code: "az-AZ", label: "Azerbaijan (Azerbaijani)", search: "azerbaijan azerbaijani azeri" },
+      { code: "be-BY", label: "Belarus (Belarusian)", search: "belarus belarusian bielorruso" },
+      { code: "bg-BG", label: "Bulgaria (Bulgarian)", search: "bulgaria bulgarian bulgaro" },
+      { code: "bn-BD", label: "Bangladesh (Bengali)", search: "bangladesh bengali bengali" },
+      { code: "bs-BA", label: "Bosnia and Herzegovina (Bosnian)", search: "bosnia bosnian bosnio" },
+      { code: "ca-ES", label: "España (Català)", search: "espana catalan catala catalan" },
+      { code: "cs-CZ", label: "Česko (Čeština)", search: "czech czechia cesko checo cestina" },
+      { code: "cy-GB", label: "United Kingdom (Welsh)", search: "united kingdom welsh gales" },
+      { code: "da-DK", label: "Danmark (Dansk)", search: "denmark dansk danes" },
+
+      { code: "de-AT", label: "Österreich (Deutsch)", search: "austria deutsch aleman" },
+      { code: "de-CH", label: "Schweiz (Deutsch)", search: "switzerland deutsch aleman suiza" },
+      { code: "de-DE", label: "Deutschland (Deutsch)", search: "germany deutschland deutsch aleman" },
+
+      { code: "el-GR", label: "Ελλάδα (Ελληνικά)", search: "greece greek griego ellada ellinika" },
+
+      { code: "en-AU", label: "Australia (English)", search: "australia english ingles" },
+      { code: "en-CA", label: "Canada (English)", search: "canada english ingles" },
+      { code: "en-GB", label: "United Kingdom (English)", search: "uk britain england english ingles" },
+      { code: "en-IE", label: "Ireland (English)", search: "ireland english ingles" },
+      { code: "en-IN", label: "India (English)", search: "india english ingles" },
+      { code: "en-NZ", label: "New Zealand (English)", search: "new zealand english ingles" },
+      { code: "en-PH", label: "Philippines (English)", search: "philippines english ingles filipinas" },
+      { code: "en-SG", label: "Singapore (English)", search: "singapore english ingles" },
+      { code: "en-US", label: "United States (English)", search: "usa us united states english ingles estados unidos" },
+      { code: "en-ZA", label: "South Africa (English)", search: "south africa english ingles sudafrica" },
+
+      { code: "es-AR", label: "Argentina (Español)", search: "argentina espanol spanish" },
+      { code: "es-BO", label: "Bolivia (Español)", search: "bolivia espanol spanish" },
+      { code: "es-CL", label: "Chile (Español)", search: "chile espanol spanish" },
+      { code: "es-CO", label: "Colombia (Español)", search: "colombia espanol spanish" },
+      { code: "es-CR", label: "Costa Rica (Español)", search: "costa rica espanol spanish" },
+      { code: "es-DO", label: "República Dominicana (Español)", search: "dominican republic republica dominicana espanol spanish" },
+      { code: "es-EC", label: "Ecuador (Español)", search: "ecuador espanol spanish" },
+      { code: "es-ES", label: "España (Español)", search: "espana espanol spain spanish" },
+      { code: "es-GT", label: "Guatemala (Español)", search: "guatemala espanol spanish" },
+      { code: "es-HN", label: "Honduras (Español)", search: "honduras espanol spanish" },
+      { code: "es-MX", label: "México (Español)", search: "mexico espanol spanish" },
+      { code: "es-NI", label: "Nicaragua (Español)", search: "nicaragua espanol spanish" },
+      { code: "es-PA", label: "Panamá (Español)", search: "panama espanol spanish" },
+      { code: "es-PE", label: "Perú (Español)", search: "peru espanol spanish" },
+      { code: "es-PR", label: "Puerto Rico (Español)", search: "puerto rico espanol spanish" },
+      { code: "es-PY", label: "Paraguay (Español)", search: "paraguay espanol spanish" },
+      { code: "es-SV", label: "El Salvador (Español)", search: "el salvador espanol spanish" },
+      { code: "es-UY", label: "Uruguay (Español)", search: "uruguay espanol spanish" },
+      { code: "es-VE", label: "Venezuela (Español)", search: "venezuela espanol spanish" },
+
+      { code: "et-EE", label: "Eesti (Eesti)", search: "estonia estonian estonio eesti" },
+      { code: "eu-ES", label: "Euskadi / España (Euskara)", search: "basque euskara vasco espana" },
+      { code: "fa-IR", label: "Iran (Persian)", search: "iran persian farsi persa" },
+      { code: "fi-FI", label: "Suomi (Suomi)", search: "finland finnish finlandes suomi" },
+      { code: "fil-PH", label: "Philippines (Filipino)", search: "philippines filipino filipinas" },
+
+      { code: "fr-BE", label: "Belgique / Belgium (Français)", search: "belgium belgique french frances" },
+      { code: "fr-CA", label: "Canada (Français)", search: "canada french francais frances" },
+      { code: "fr-CH", label: "Suisse (Français)", search: "switzerland suisse french francais frances" },
+      { code: "fr-FR", label: "France (Français)", search: "france french francais frances" },
+      { code: "fr-LU", label: "Luxembourg (Français)", search: "luxembourg french francais frances" },
+
+      { code: "ga-IE", label: "Ireland (Irish)", search: "ireland irish irlandes gaelico" },
+      { code: "gl-ES", label: "España (Galego)", search: "galicia galego gallego espana" },
+      { code: "gu-IN", label: "India (Gujarati)", search: "india gujarati guyarati" },
+      { code: "he-IL", label: "Israel (Hebrew)", search: "israel hebrew hebreo" },
+      { code: "hi-IN", label: "India (Hindi)", search: "india hindi" },
+      { code: "hr-HR", label: "Hrvatska (Hrvatski)", search: "croatia croatian croata hrvatski" },
+      { code: "hu-HU", label: "Magyarország (Magyar)", search: "hungary hungarian hungaro magyar" },
+      { code: "hy-AM", label: "Armenia (Armenian)", search: "armenia armenian armenio" },
+
+      { code: "id-ID", label: "Indonesia (Bahasa Indonesia)", search: "indonesia bahasa indonesian indonesio" },
+      { code: "is-IS", label: "Ísland (Íslenska)", search: "iceland icelandic islandes islenska" },
+      { code: "it-CH", label: "Svizzera (Italiano)", search: "switzerland italian italiano suiza" },
+      { code: "it-IT", label: "Italia (Italiano)", search: "italy italia italian italiano" },
+
+      { code: "ja-JP", label: "Japan (日本語)", search: "japan japanese japones nihongo" },
+      { code: "ka-GE", label: "Georgia (Georgian)", search: "georgia georgian georgiano" },
+      { code: "kk-KZ", label: "Kazakhstan (Kazakh)", search: "kazakhstan kazakh kazajo" },
+      { code: "km-KH", label: "Cambodia (Khmer)", search: "cambodia khmer camboya" },
+      { code: "kn-IN", label: "India (Kannada)", search: "india kannada" },
+      { code: "ko-KR", label: "Korea (한국어)", search: "korea korean coreano" },
+      { code: "lo-LA", label: "Laos (Lao)", search: "laos lao laosiano" },
+      { code: "lt-LT", label: "Lietuva (Lietuvių)", search: "lithuania lithuanian lituano" },
+      { code: "lv-LV", label: "Latvija (Latviešu)", search: "latvia latvian leton" },
+
+      { code: "mk-MK", label: "North Macedonia (Macedonian)", search: "macedonia macedonian macedonio" },
+      { code: "ml-IN", label: "India (Malayalam)", search: "india malayalam" },
+      { code: "mn-MN", label: "Mongolia (Mongolian)", search: "mongolia mongolian mongol" },
+      { code: "mr-IN", label: "India (Marathi)", search: "india marathi" },
+      { code: "ms-MY", label: "Malaysia (Bahasa Melayu)", search: "malaysia malay malayo bahasa melayu" },
+      { code: "mt-MT", label: "Malta (Maltese)", search: "malta maltese maltes" },
+      { code: "my-MM", label: "Myanmar (Burmese)", search: "myanmar burmese birmano" },
+
+      { code: "nb-NO", label: "Norge (Norsk Bokmål)", search: "norway norwegian noruego bokmal" },
+      { code: "ne-NP", label: "Nepal (Nepali)", search: "nepal nepali nepali" },
+      { code: "nl-BE", label: "België / Belgium (Nederlands)", search: "belgium belgie nederlands dutch neerlandes" },
+      { code: "nl-NL", label: "Nederland (Nederlands)", search: "netherlands holland dutch neerlandes nederlands" },
+
+      { code: "pl-PL", label: "Polska (Polski)", search: "poland polish polaco polski" },
+      { code: "pt-AO", label: "Angola (Português)", search: "angola portuguese portugues portugues" },
+      { code: "pt-BR", label: "Brasil (Português)", search: "brazil brasil portuguese portugues portugues" },
+      { code: "pt-MZ", label: "Mozambique (Português)", search: "mozambique portuguese portugues portugues" },
+      { code: "pt-PT", label: "Portugal (Português)", search: "portugal portuguese portugues portugues" },
+
+      { code: "ro-RO", label: "România (Română)", search: "romania romanian rumano romana" },
+      { code: "ru-RU", label: "Russia (Русский)", search: "russia russian ruso" },
+
+      { code: "si-LK", label: "Sri Lanka (Sinhala)", search: "sri lanka sinhala cingales" },
+      { code: "sk-SK", label: "Slovensko (Slovenčina)", search: "slovakia slovak eslovaco" },
+      { code: "sl-SI", label: "Slovenija (Slovenščina)", search: "slovenia slovenian esloveno" },
+      { code: "sq-AL", label: "Albania (Albanian)", search: "albania albanian albanes" },
+      { code: "sr-RS", label: "Srbija (Srpski)", search: "serbia serbian serbio" },
+      { code: "sv-FI", label: "Finland (Svenska)", search: "finland swedish sueco svenska" },
+      { code: "sv-SE", label: "Sverige (Svenska)", search: "sweden swedish sueco sverige svenska" },
+      { code: "sw-KE", label: "Kenya (Swahili)", search: "kenya swahili suajili" },
+      { code: "sw-TZ", label: "Tanzania (Swahili)", search: "tanzania swahili suajili" },
+
+      { code: "ta-IN", label: "India (Tamil)", search: "india tamil" },
+      { code: "ta-LK", label: "Sri Lanka (Tamil)", search: "sri lanka tamil" },
+      { code: "ta-SG", label: "Singapore (Tamil)", search: "singapore tamil" },
+      { code: "te-IN", label: "India (Telugu)", search: "india telugu" },
+      { code: "th-TH", label: "Thailand (ไทย)", search: "thailand thai tailandes" },
+      { code: "tr-TR", label: "Türkiye (Türkçe)", search: "turkey turkish turco turkce" },
+
+      { code: "uk-UA", label: "Ukraine (Українська)", search: "ukraine ukrainian ucraniano" },
+      { code: "ur-PK", label: "Pakistan (Urdu)", search: "pakistan urdu" },
+      { code: "uz-UZ", label: "Uzbekistan (Uzbek)", search: "uzbekistan uzbek uzbeko" },
+      { code: "vi-VN", label: "Vietnam (Tiếng Việt)", search: "vietnam vietnamese vietnamita tieng viet" },
+
+      { code: "zh-CN", label: "China (简体中文)", search: "china chinese chino simplificado" },
+      { code: "zh-HK", label: "Hong Kong (繁體中文)", search: "hong kong chinese chino tradicional" },
+      { code: "zh-SG", label: "Singapore (中文)", search: "singapore chinese chino" },
+      { code: "zh-TW", label: "Taiwan (繁體中文)", search: "taiwan chinese chino tradicional" }
+    ];
+
+    const searchShell = document.getElementById("searchShell");
+    const input = document.getElementById("languageInput");
+    const toggleBtn = document.getElementById("toggleSearch");
+    const dropdown = document.getElementById("dropdown");
+    const helperText = document.getElementById("helperText");
+    const rememberChoice = document.getElementById("rememberChoice");
+    const goBtn = document.getElementById("goBtn");
+    const status = document.getElementById("status");
+
+    let selectedLocale = null;
+    let filteredLocales = [...locales];
+
+    function normalizeText(text) {
+      return (text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function openDropdown() {
+      searchShell.classList.add("open");
+    }
+
+    function closeDropdown() {
+      searchShell.classList.remove("open");
+    }
+
+    function renderDropdown(list) {
+      dropdown.innerHTML = "";
+
+      if (!list.length) {
+        const empty = document.createElement("div");
+        empty.className = "dropdown-empty";
+        empty.textContent = "No se encontraron resultados.";
+        dropdown.appendChild(empty);
+        return;
+      }
+
+      list.forEach(item => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "dropdown-item" + (selectedLocale && selectedLocale.code === item.code ? " active" : "");
+        button.textContent = item.label;
+
+        button.addEventListener("mousedown", function(e){
+          e.preventDefault();
+          setSelected(item, "manual");
+        });
+
+        dropdown.appendChild(button);
+      });
+    }
+
+    function setSelected(item, source = "manual") {
+      selectedLocale = item;
+      input.value = item.label;
+      closeDropdown();
+
+      if (source === "auto") {
+        helperText.textContent = "Detectado automáticamente: " + item.label;
+      } else if (source === "remembered") {
+        helperText.textContent = "Selección guardada recuperada: " + item.label;
+      } else {
+        helperText.textContent = "Seleccionado: " + item.label;
+      }
+
+      renderDropdown(filteredLocales);
+    }
+
+    function filterLocales(term) {
+      const q = normalizeText(term);
+
+      if (!q) return [...locales];
+
+      return locales.filter(item => {
+        const haystack = normalizeText(item.label + " " + item.code + " " + item.search);
+        return haystack.includes(q);
+      });
+    }
+
+    function detectLocaleFast() {
+      const prefs = Array.from(
+        new Set(
+          [...(navigator.languages || []), navigator.language]
+            .filter(Boolean)
+            .map(v => v.trim())
+        )
+      );
+
+      for (const pref of prefs) {
+        const exact = locales.find(item => item.code.toLowerCase() === pref.toLowerCase());
+        if (exact) return exact;
+      }
+
+      for (const pref of prefs) {
+        const lang = pref.toLowerCase().split("-")[0];
+        const partial = locales.find(item => item.code.toLowerCase().split("-")[0] === lang);
+        if (partial) return partial;
+      }
+
+      return null;
+    }
+
+    function clearSavedLocale() {
+      localStorage.removeItem("oml_remember");
+      localStorage.removeItem("oml_locale_code");
+      localStorage.removeItem("oml_locale_label");
+      sessionStorage.removeItem("oml_temp_locale_code");
+      sessionStorage.removeItem("oml_temp_locale_label");
+    }
+
+    function saveLocale(item, remember) {
+      if (remember) {
+        localStorage.setItem("oml_remember", "true");
+        localStorage.setItem("oml_locale_code", item.code);
+        localStorage.setItem("oml_locale_label", item.label);
+
+        sessionStorage.removeItem("oml_temp_locale_code");
+        sessionStorage.removeItem("oml_temp_locale_label");
+      } else {
+        localStorage.removeItem("oml_remember");
+        localStorage.removeItem("oml_locale_code");
+        localStorage.removeItem("oml_locale_label");
+
+        sessionStorage.setItem("oml_temp_locale_code", item.code);
+        sessionStorage.setItem("oml_temp_locale_label", item.label);
+      }
+    }
+
+    function restoreSavedOrDetect() {
+      const remembered = localStorage.getItem("oml_remember");
+      const savedCode = localStorage.getItem("oml_locale_code");
+      const tempCode = sessionStorage.getItem("oml_temp_locale_code");
+
+      if (remembered === "true" && savedCode) {
+        const savedItem = locales.find(item => item.code === savedCode);
+        if (savedItem) {
+          rememberChoice.checked = true;
+          setSelected(savedItem, "remembered");
+          return;
+        }
+      }
+
+      if (tempCode) {
+        const tempItem = locales.find(item => item.code === tempCode);
+        if (tempItem) {
+          rememberChoice.checked = false;
+          setSelected(tempItem, "manual");
+          helperText.textContent = "Usando selección temporal: " + tempItem.label;
+          return;
+        }
+      }
+
+      const auto = detectLocaleFast();
+      if (auto) {
+        setSelected(auto, "auto");
+      } else {
+        helperText.textContent = "No se pudo detectar con precisión. Escribe país o idioma.";
+      }
+    }
+
+    input.addEventListener("focus", () => {
+      filteredLocales = filterLocales(input.value);
+      renderDropdown(filteredLocales);
+      openDropdown();
+    });
+
+    input.addEventListener("input", () => {
+      selectedLocale = null;
+      filteredLocales = filterLocales(input.value);
+      renderDropdown(filteredLocales);
+      openDropdown();
+      helperText.textContent = "Busca por país, idioma o código. Ejemplo: Perú, Español, es-PE.";
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        filteredLocales = filterLocales(input.value);
+        renderDropdown(filteredLocales);
+        openDropdown();
+
+        if (filteredLocales.length === 1) {
+          setSelected(filteredLocales[0], "manual");
+        }
+      }
+    });
+
+    toggleBtn.addEventListener("click", () => {
+      filteredLocales = filterLocales(input.value);
+      renderDropdown(filteredLocales);
+
+      if (searchShell.classList.contains("open")) {
+        closeDropdown();
+      } else {
+        openDropdown();
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!searchShell.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    goBtn.addEventListener("click", () => {
+      let current = selectedLocale;
+
+      if (!current) {
+        const exactMatch = locales.find(item =>
+          normalizeText(item.label) === normalizeText(input.value) ||
+          normalizeText(item.code) === normalizeText(input.value)
+        );
+
+        if (exactMatch) {
+          current = exactMatch;
+          setSelected(current, "manual");
+        }
+      }
+
+      if (!current) {
+        status.textContent = "Primero selecciona un idioma válido.";
+        return;
+      }
+
+      saveLocale(current, rememberChoice.checked);
+      status.textContent = "Idioma listo: " + current.label;
+
+      window.location.href = "index.html";
+    });
+
+    restoreSavedOrDetect();
+    renderDropdown(locales);
+  </script>
+</body>
+</html>
