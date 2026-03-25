@@ -61,7 +61,7 @@ const LOCALE_ALIASES = {
 
 const I18N = {
   es: {
-    bioHtml: `Exportación, comunidad y productos premium.<br>Todo en un solo lugar.`,
+    bioHtml: `Exportación de jengibre y cúrcuma del Perú.<br>Todo en un solo lugar.`,
     ariaPromotion: `Promoción`,
     ariaNotifications: `Notificaciones`,
     ariaShare: `Compartir`,
@@ -123,12 +123,12 @@ const I18N = {
     storePreviewTitle: `Almacen Europa`,
     storePreviewSub: `2 productos`,
     panelTiendaGridTitles: [
-      `Mercadería en Rack`,
-      `Conservación de Mercadería`,
-      `Gestión de Stock`,
-      `Operaciones de Almacén`,
-      `Supervisión de Carga`,
-      `Control de Calidad`
+      `Almacén en Europa `,
+      `Almacén en Europa`,
+      `Almacén en Europa`,
+      `Almacén en Europa`,
+      `Almacén en Europa`,
+      `Almacén en Europa`
     ],
     closeVideoAria: `Cerrar video`,
     loadingPdf: `Cargando PDF...`,
