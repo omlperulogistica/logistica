@@ -5,23 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OML PERÚ</title>
 
-  <script>
-    (function () {
-      const remembered = localStorage.getItem("oml_remember") === "true";
-      const savedLocale = localStorage.getItem("oml_locale_code");
-      const tempLocale = sessionStorage.getItem("oml_temp_locale_code");
-
-      const hasLanguage =
-        (remembered && savedLocale) ||
-        (!remembered && tempLocale) ||
-        (!remembered && savedLocale);
-
-      if (!hasLanguage) {
-        window.location.replace("idioma.html");
-      }
-    })();
-  </script>
-
   <link rel="icon" type="image/png" href="https://omleurope.com/wp-content/uploads/2025/08/cropped-cropped-LOGO_OFICIALMETE_OMLEUROPE-Pica-removebg-preview-2.png" />
   <link rel="stylesheet" href="css/inicio.css" />
 </head>
@@ -71,7 +54,7 @@
       </h1>
 
       <p class="bio">
-        Exportación de jengibre y cúrcuma del Perú.<br>
+        Exportación, comunidad y productos premium.<br>
         Todo en un solo lugar.
       </p>
 
@@ -320,46 +303,46 @@
         </div>
 
         <section class="story-section">
-          <h2 class="story-heading">SOCIOS EN EUROPA</h2>
+  <h2 class="story-heading">SOCIOS EN EUROPA</h2>
 
-          <div class="story-slider-wrap">
-            <div class="story-slider story-slider-center">
-              <button
-                class="story-card openStoryViewer"
-                type="button"
-                data-title="Construcción de puertas y ventanas de seguridad en una escuela de Pichanaqui"
-                data-pdf="pdf/apoyoescula.pdf"
-              >
-                <img
-                  src="img/apoyocomunidad.jpeg"
-                  alt="Apoyo a una escuela: construcción de puertas y ventanas de seguridad"
-                >
-                <div class="story-body">
-                  <div class="story-title">Apoyo a una escuela: construcción de puertas y ventanas de seguridad</div>
-                  <div class="story-sub">PDF</div>
-                  <div class="story-menu">⋮</div>
-                </div>
-              </button>
+  <div class="story-slider-wrap">
+    <div class="story-slider story-slider-center">
+      <button
+        class="story-card openStoryViewer"
+        type="button"
+        data-title="Construcción de puertas y ventanas de seguridad en una escuela de Pichanaqui"
+        data-pdf="pdf/apoyoescula.pdf"
+      >
+        <img
+          src="img/apoyocomunidad.jpeg"
+          alt="Apoyo a una escuela: construcción de puertas y ventanas de seguridad"
+        >
+        <div class="story-body">
+          <div class="story-title">Apoyo a una escuela: construcción de puertas y ventanas de seguridad</div>
+          <div class="story-sub">PDF</div>
+          <div class="story-menu">⋮</div>
+        </div>
+      </button>
 
-              <button
-                class="story-card openStoryViewer"
-                type="button"
-                data-title="Colegios de Alto Miricharo reciben apoyo comunitario durante Navidad 2025"
-                data-pdf="pdf/apoyo2.pdf"
-              >
-                <img
-                  src="https://blueberriesfrom.weebly.com/uploads/1/5/4/8/154844069/whatsapp-image-2025-12-19-at-2-17-32-pm_orig.jpeg"
-                  alt="Apoyo comunitario en Alto Miricharo durante Navidad 2025"
-                >
-                <div class="story-body">
-                  <div class="story-title">Apoyo comunitario en Alto Miricharo durante Navidad 2025</div>
-                  <div class="story-sub">PDF</div>
-                  <div class="story-menu">⋮</div>
-                </div>
-              </button>
-            </div>
-          </div>
-        </section>
+      <button
+        class="story-card openStoryViewer"
+        type="button"
+        data-title="Colegios de Alto Miricharo reciben apoyo comunitario durante Navidad 2025"
+        data-pdf="pdf/apoyo2.pdf"
+      >
+        <img
+          src="https://blueberriesfrom.weebly.com/uploads/1/5/4/8/154844069/whatsapp-image-2025-12-19-at-2-17-32-pm_orig.jpeg"
+          alt="Apoyo comunitario en Alto Miricharo durante Navidad 2025"
+        >
+        <div class="story-body">
+          <div class="story-title">Apoyo comunitario en Alto Miricharo durante Navidad 2025</div>
+          <div class="story-sub">PDF</div>
+          <div class="story-menu">⋮</div>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
 
         <section class="instagram-card">
           <div class="instagram-grid">
@@ -526,7 +509,7 @@
           <a href="#" class="grid-card">
             <img src="img/paletizado-proceso.jpeg" alt="Producto 1">
             <div class="grid-bottom">
-              <div class="grid-title">Almacen en Europa</div>
+              <div class="grid-title">Almacén en Europa</div>
               <div class="dots">⋮</div>
             </div>
           </a>
@@ -534,7 +517,7 @@
           <a href="#" class="grid-card">
             <img src="img/almaceneurope3.jpeg" alt="Producto 2">
             <div class="grid-bottom">
-              <div class="grid-title">Almacen en Europa</div>
+              <div class="grid-title">Almacén en Europa</div>
               <div class="dots">⋮</div>
             </div>
           </a>
@@ -542,7 +525,7 @@
           <a href="#" class="grid-card">
             <img src="img/contenedor4.jpeg" alt="Producto 3">
             <div class="grid-bottom">
-              <div class="grid-title">Almacen en Europa</div>
+              <div class="grid-title">Almacén en Europa</div>
               <div class="dots">⋮</div>
             </div>
           </a>
@@ -550,7 +533,7 @@
           <a href="#" class="grid-card">
             <img src="img/contenedorentrada.jpeg" alt="Producto 4">
             <div class="grid-bottom">
-              <div class="grid-title">Almacen en Europa</div>
+              <div class="grid-title">Almacén en Europa</div>
               <div class="dots">⋮</div>
             </div>
           </a>
@@ -558,7 +541,7 @@
           <a href="#" class="grid-card">
             <img src="img/alamceneuropa2.jpeg" alt="Producto 5">
             <div class="grid-bottom">
-              <div class="grid-title">Almacen en Europa</div>
+              <div class="grid-title">Almacén en Europa</div>
               <div class="dots">⋮</div>
             </div>
           </a>
@@ -566,7 +549,7 @@
           <a href="#" class="grid-card">
             <img src="img/alamceneuropa4.jpeg" alt="Producto 6">
             <div class="grid-bottom">
-              <div class="grid-title">Almacen en Europa</div>
+              <div class="grid-title">Almacén en Europa</div>
               <div class="dots">⋮</div>
             </div>
           </a>
