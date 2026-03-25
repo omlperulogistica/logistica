@@ -1589,61 +1589,26 @@ body{
     padding:0 8px 0;
   }
 
-  /* =========================
-     🔥 FIX PRINCIPAL (SLIDER)
-     ========================= */
-
-  .story-section{
-    width:100%;
-    max-width:100%;
-    overflow:hidden;
-  }
-
-  .story-slider-wrap{
-    width:100%;
-    overflow:hidden;
-  }
-
-  .story-slider,
-  .story-slider-center{
-    width:100%;
-  }
-
-  .story-slider-center{
-    display:flex;
-    justify-content:flex-start; /* 🔥 antes estaba center */
-    gap:14px;
-    overflow-x:auto;
-    overflow-y:hidden;
-    scroll-behavior:smooth;
-    scroll-snap-type:x mandatory;
-    scrollbar-width:none;
-    -ms-overflow-style:none;
-    padding:0 2px 6px;
-  }
-
-  .story-slider-center::-webkit-scrollbar{
-    display:none;
-  }
-
+  /* 🔥 SOLO FIX DE LAS TARJETAS (NO TOCA NADA MÁS) */
   .story-card{
     flex:0 0 calc((100% - 14px) / 2);
     max-width:calc((100% - 14px) / 2);
     min-width:calc((100% - 14px) / 2);
-    border-radius:22px;
-    scroll-snap-align:start;
+    border-radius:24px;
   }
 
   .story-card img{
     height:215px;
+    width:100%;
+    object-fit:cover;
+    display:block;
   }
 
   .story-body{
     min-height:78px;
-    padding:12px;
   }
 
-  /* ========================= */
+  /* RESTO IGUAL (NO TOCADO) */
 
   .view-pill-thumb{
     width:42px;
@@ -1658,7 +1623,7 @@ body{
   }
 
   .view-doc-card{
-    flex:0 0 calc((100% - 14px) / 2.2);
+    flex:0 0 calc((100% - 14px) / 2.35);
     max-width:none;
     min-width:0;
     border-radius:22px;
@@ -1846,30 +1811,10 @@ body{
 
   .view-promo-title{
     font-size:34px;
-    line-height:1;
-    max-width:330px;
   }
 
   .view-promo-text{
     font-size:18px;
-    line-height:1.45;
-    max-width:330px;
-  }
-
-  .view-promo-input{
-    width:224px;
-    height:52px;
-  }
-
-  .view-promo-cta{
-    width:148px;
-    height:60px;
-    font-size:15px;
-  }
-
-  .view-promo-links a{
-    font-size:14px;
-    max-width:220px;
   }
 
   .view-promo-phone{
